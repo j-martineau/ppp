@@ -30,7 +30,7 @@ ddd_PROPS <- function() {utils::help("ddd_PROPS", package = "ppp")}
 #' @export
 ddd <- function(x) {
   Y <- NULL
-  for (DDD in ppp::ddd_funs()) {if (base::eval(base::parse(text = base::paste0("ppp::.", DDD, "(x)")))) {Y <- base::c(Y, base::tolower(DDD))}}
+  for (ddd in ppp::ddd_funs()) {if (base::eval(base::parse(text = base::paste0("ppp::.", ddd, "(x)")))) {Y <- base::c(Y, base::tolower(DDD))}}
   Y
 }
 
@@ -52,12 +52,12 @@ is_ddd_spec <- function(spec) {
 #' @describeIn ddd_PROPS Checks whether `spec` is a defined-dimensionality property spec subject to any count or value restrictions in `...`. Returns a logical scalar. See \code{\link{ppp}} for a definition of a property spec.
 #' @export
 DDD <- function(x, spec, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::is_ddd_spec(spec)) {Errors <- base::c(Errors, "[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from ddd_props().")}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::is_ddd_spec(spec)) {errs <- base::c(errs, "[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from ddd_props().")}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
   if (ppp::meets(x, ...)) {
-    Props <- ppp::spec2props(spec)
-    for (Prop in base::toupper(Props)) {if (base::eval(base::parse(text = base::paste0('ppp:::.', Prop, '(x)')))) {return(T)}}
+    props <- ppp::spec2props(spec)
+    for (prop in base::toupper(props)) {if (base::eval(base::parse(text = base::paste0('ppp:::.', prop, '(x)')))) {return(T)}}
   }
   F
 }

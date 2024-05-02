@@ -2,7 +2,7 @@
 #' @title Combined Completeness Plus Extended Mode Properties
 #' @description Check for combination of \link[=CMP]{completeness} and \link[=mmm]{extended mode}.
 #' @param x An R object.
-#' @param .mmm A character scalar extended mode property from `mmm_props()`.
+#' @param mmm A character scalar extended mode property from `mmm_props()`.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -14,16 +14,16 @@
 #' @export
 cmp_mmm_PROPS <- function() {utils::help("cmp_mmm_PROPS", package = "ppp")}
 
-#' @describeIn cmp_mmm_PROPS Check `x` for completeness and for the extended mode in `.mmm` subject to any count or value restrictions in `...`. Returns a logical scalar.
+#' @describeIn cmp_mmm_PROPS Check `x` for completeness and for the extended mode in `mmm` subject to any count or value restrictions in `...`. Returns a logical scalar.
 #' @export
-cmp_mmm <- function(x, .mmm, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::.cmp_chr_scl(.mmm, .valid = base::c(ppp::mmm_funs(), ppp::mmm_props()))) {Errors <- base::c(Errors, '[.mmm] is not a scalar value from mmm_props().')}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
+cmp_mmm <- function(x, mmm, ...) {
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::.cmp_chr_scl(mmm, .valid = base::c(ppp::mmm_funs(), ppp::mmm_props()))) {errs <- base::c(errs, '[mmm] is not a scalar value from mmm_props().')}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, fun = "cmpm_mmm", pkg = "ppp")}
   if (!ppp::meets(x, ...)) {F}
   else if (!base::is.atomic(x) | base::length(x) == 0) {F}
   else if (base::any(base::is.na(x))) {F}
-  else {base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(.mmm), "(x)")))}
+  else {base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(mmm), "(x)")))}
 }
 
 #' @describeIn cmp_mmm_PROPS Lists completeness plus extended mode property checking functions. Returns a character vector.

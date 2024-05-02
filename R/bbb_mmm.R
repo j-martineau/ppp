@@ -2,8 +2,8 @@
 #' @title Combination Basic Plus Extended Mode Properties
 #' @description Check for combinations of \link[=bbb]{basic} and \link[=mmm]{extended mode} properties.
 #' @param x An R object.
-#' @param .bbb A character scalar single basic property from `c('atm', 'pop')`.
-#' @param .mmm A character scalar single extended mode property from \code{\link{mmm_props}()}.
+#' @param bbb A character scalar single basic property from `c('atm', 'pop')`.
+#' @param mmm  A character scalar single extended mode property from \code{\link{mmm_props}()}.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -16,24 +16,24 @@
 #' @export
 bbb_mmm_PROPS <- function() {utils::help("bbb_mmm_PROPS", package = "ppp")}
 
-#' @describeIn bbb_mmm_PROPS Checks `x` against the basic property in `.bbb` and the extended mode property in `.mmm` subject to any count and/or value restrictions in `...`. Returns a logical scalar.
+#' @describeIn bbb_mmm_PROPS Checks `x` against the basic property in `bbb` and the extended mode property in `mmm ` subject to any count and/or value restrictions in `...`. Returns a logical scalar.
 #' @export
-bbb_mmm <- function(x, .bbb, .mmm, ...) {
+bbb_mmm <- function(x, bbb, mmm , ...) {
   bbbValid <- base::c("atm", "pop")
   mmmValid <- ppp::mmm_props()
-  if (base::is.character(.bbb)) {.bbb <- base::tolower(.bbb)}
-  if (base::is.character(.mmm)) {.mmm <- base::tolower(.mmm)}
-  Errors <- ppp::meets_errs(x, ...)
-  ErrBBB <- "[.bbb] is not a scalar value from c('atm', 'pop')."
-  ErrMMM <- "[.mmm] is not a scalar value from mmm_props()."
-  if (base::length(.bbb) == 1) {Errors <- base::c(Errors, ErrBBB)} else if (!(.bbb %in% bbbValid)) {Errors <- base::c(Errors, ErrBBB)}
-  if (base::length(.mmm) == 1) {Errors <- base::c(Errors, ErrMMM)} else if (!(.mmm %in% mmmValid)) {Errors <- base::c(Errors, ErrMMM)}
-  if (!base::is.null(Errors)) {ppp::stopperrs(Errors, .PKG = "ppp")}
+  if (base::is.character(bbb)) {bbb <- base::tolower(bbb)}
+  if (base::is.character(mmm)) {mmm <- base::tolower(mmm)}
+  errs <- ppp::meets_errs(x, ...)
+  errBBB <- "[bbb] is not a scalar value from c('atm', 'pop')."
+  errMMM <- "[mmm ] is not a scalar value from mmm_props()."
+  if (base::length(bbb) == 1) {errs <- base::c(errs, errBBB)} else if (!(bbb %in% bbbValid)) {errs <- base::c(errs, errBBB)}
+  if (base::length(mmm) == 1) {errs <- base::c(errs, errMMM)} else if (!(mmm %in% mmmValid)) {errs <- base::c(errs, errMMM)}
+  if (!base::is.null(errs)) {ppp::stopperrs(errs, pkg = "ppp")}
   if (!ppp::meets(x, ...)) {return(F)}
   if (!base::is.atomic(x)) {return(F)}
-  if (.bbb != "pop" & .bbb != "atm") {return(F)}
-  if (.bbb == "pop" & base::length(x) == 0) {return(F)}
-  base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(.mmm), "(x)")))
+  if (bbb != "pop" & bbb != "atm") {return(F)}
+  if (bbb == "pop" & base::length(x) == 0) {return(F)}
+  base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(mmm), "(x)")))
 }
 
 #' @describeIn bbb_mmm_PROPS Lists all combo basic plus extended mode property checking functions. Returns a character vector.

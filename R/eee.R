@@ -79,12 +79,12 @@ is_eee_spec <- function(spec) {
 #' @describeIn eee_PROPS Checks whether `x` matches the effective dimensionality property spec in `spec` subject to any count or value restrictions in `...`. Returns a logical scalar. See \code{\link{ppp}} for a definition of a property spec.
 #' @export
 EEE <- function(x, spec, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::is_eee_spec(spec)) {Errors <- base::c(Errors, "[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from eee_props().")}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = 'aj')}
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::is_eee_spec(spec)) {errs <- base::c(errs, "[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from eee_props().")}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = 'aj')}
   if (ppp::meets(x, ...)) {
-    Props <- ppp::spec2props(spec)
-    for (Prop in base::toupper(Props)) {if (base::eval(base::parse(text = base::paste0("ppp:::.", Prop, "(x)")))) {return(T)}}
+    props <- ppp::spec2props(spec)
+    for (prop in base::toupper(props)) {if (base::eval(base::parse(text = base::paste0("ppp:::.", prop, "(x)")))) {return(T)}}
   }
   F
 }

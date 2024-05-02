@@ -2,7 +2,7 @@
 #' @title Combo Uniqueness and Extended Class Properties
 #' @description Functions checking for combinations of \link[=UNQ]{uniqueness} and \link[=ccc]{extended class}.
 #' @param x An R object.
-#' @param .ccc A character scalar single extended property from \code{\link{ccc_props}()}.
+#' @param ccc A character scalar single extended property from \code{\link{ccc_props}()}.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -31,14 +31,14 @@
 #' @export
 unq_ccc_PROPS <- function() {utils::help("unq_ccc_PROPS", package = "ppp")}
 
-#' @describeIn unq_ccc_PROPS Checks `x` for uniqueness and against the extended class in `.ccc`. Return a logical scalar.
+#' @describeIn unq_ccc_PROPS Checks `x` for uniqueness and against the extended class in `ccc`. Return a logical scalar.
 #' @export
-unq_ccc <- function(x, .ccc, ...) {
+unq_ccc <- function(x, ccc, ...) {
   UNQ <- function(x) {base::length(x) == base::length(base::unique(x))}
-  if (ppp::cmp_ccc(x, .ccc, ...)) {
-    .ccc <- base::tolower(.ccc)
-    if (.ccc == "dtf") {base::all(base::apply(x, 2, UNQ))}
-    else if (.ccc == "vls") {base::all(base::sapply(x, UNQ))}
+  if (ppp::cmp_ccc(x, ccc, ...)) {
+    ccc <- base::tolower(ccc)
+    if (ccc == "dtf") {base::all(base::apply(x, 2, UNQ))}
+    else if (ccc == "vls") {base::all(base::sapply(x, UNQ))}
     else {base::length(x) == base::length(base::unique(x))}
   } else {F}
 }

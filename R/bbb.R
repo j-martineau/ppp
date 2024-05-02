@@ -52,12 +52,12 @@ is_bbb_spec <- function(spec) {
 #' @describeIn bbb_PROPS Checks `x` against the basic property spec `spec` subject to any count or value restrictions in `...`. Returns a logical scalar. See \code{\link{ppp}} for a definition of a property spec.
 #' @export
 BBB <- function(x, spec, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::is_bbb_spec(spec)) {Errors <- base::c(Errors, '[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from bbb_props().')}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::is_bbb_spec(spec)) {errs <- base::c(errs, '[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from bbb_props().')}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
   if (ppp::meets(x, ...)) {
-    Props <- base::toupper(ppp::spec2props(spec))
-    for (Prop in Props) {if (base::eval(base::parse(text = base::paste0("ppp::.", Prop, "(X)")))) {return(T)}}
+    props <- base::toupper(ppp::spec2props(spec))
+    for (prop in props) {if (base::eval(base::parse(text = base::paste0("ppp::.", prop, "(X)")))) {return(T)}}
   }
   F
 }

@@ -3,8 +3,8 @@
 #' @title Combo Completeness Plus Extended Mode Plus Extended Class Combination Properties
 #' @description Combo completeness plus extended mode plus extended class combination properties are the combination of \link[=UNQ]{completeness}, a single \link[=mmm]{extended mode} property, and a single \link[=ccc]{extended class} property.
 #' @param x An R object.
-#' @param .mmm A character scalar single extended mode property from \code{\link{mmm_props}()}.
-#' @param .ccc A character scalar single extended class property from \code{\link{ccc_props}()}.
+#' @param mmm A character scalar single extended mode property from \code{\link{mmm_props}()}.
+#' @param ccc A character scalar single extended class property from \code{\link{ccc_props}()}.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -16,15 +16,15 @@
 #' @export
 cmp_mmm_ccc_PROPS <- function() {utils::help("cmp_mmm_ccc_PROPS", package = "ppp")}
 
-#' @describeIn cmp_mmm_ccc_PROPS Checks `x` for completeness, for extended mode `.mmm`, and for extended class `.ccc` subject to any count or value restrictions in `...`. Returns a logical scalar.
+#' @describeIn cmp_mmm_ccc_PROPS Checks `x` for completeness, for extended mode `mmm`, and for extended class `ccc` subject to any count or value restrictions in `...`. Returns a logical scalar.
 #' @export
-cmp_mmm_ccc <- function(x, .mmm, .ccc, ...) {
-  if (ppp::cmp_mmm_ccc(x, .mmm, .ccc, ...)) {
-    if      (.ccc == "dtf") {base::nrow(x) == base::nrow(base::unique(x))}
-    else if (.ccc == "vls") {
-      N  <- base::lengths(x)
-      NU <- base::sapply(x, function(x) {base::length(base::unique(x))})
-      base::all(N == NU)
+cmp_mmm_ccc <- function(x, mmm, ccc, ...) {
+  if (ppp::mmm_ccc(x, mmm, ccc, ...)) {
+    if      (ccc == "dtf") {base::nrow(x) == base::nrow(base::unique(x))}
+    else if (ccc == "vls") {
+      n  <- base::lengths(x)
+      nu <- base::sapply(x, function(x) {base::length(base::unique(x))})
+      base::all(n == nu)
     } else {base::length(x) == base::length(base::unique(x))}
   } else {F}
 }

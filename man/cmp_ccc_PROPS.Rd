@@ -17,7 +17,7 @@
 \usage{
 cmp_ccc_PROPS()
 
-cmp_ccc(x, .ccc, ...)
+cmp_ccc(x, ccc, ...)
 
 cmp_ccc_funs()
 
@@ -40,7 +40,7 @@ cmp_vls(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.ccc}{A character scalar single xclass property from \code{\link{ccc_props}()}.}
+\item{ccc}{A character scalar single xclass property from \code{\link{ccc_props}()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -57,7 +57,7 @@ Combinations of \link[=CMP]{completeness} and \link[=ccc]{extended class} proper
 }
 \section{Functions}{
 \itemize{
-\item \code{cmp_ccc()}: Checks \code{x} for completeness plus the extended class in \code{.ccc} subject to count and/or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{cmp_ccc()}: Checks \code{x} for completeness plus the extended class in \code{ccc} subject to count and/or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{cmp_ccc_funs()}: Lists all completeness plus extended class property checking functions. Returns a character vector.
 

@@ -5,14 +5,6 @@
 \alias{mmm_ccc_PROPS}
 \alias{mmm_ccc}
 \alias{mmm_ccc_funs}
-\alias{atm_arr}
-\alias{atm_dtf}
-\alias{atm_gen}
-\alias{atm_mat}
-\alias{atm_mvc}
-\alias{atm_scl}
-\alias{atm_vec}
-\alias{atm_vls}
 \alias{ch1_arr}
 \alias{ch1_dtf}
 \alias{ch1_gen}
@@ -233,25 +225,9 @@
 \usage{
 mmm_ccc_PROPS()
 
-mmm_ccc(x, .mmm, .ccc, ...)
+mmm_ccc(x, mmm, ccc, ...)
 
 mmm_ccc_funs()
-
-atm_arr(x, ...)
-
-atm_dtf(x, ...)
-
-atm_gen(x, ...)
-
-atm_mat(x, ...)
-
-atm_mvc(x, ...)
-
-atm_scl(x, ...)
-
-atm_vec(x, ...)
-
-atm_vls(x, ...)
 
 ch1_arr(x, ...)
 
@@ -688,9 +664,9 @@ whl_vls(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.mmm}{A character scalar single extended mode property from \code{\link{mmm_props}()}.}
+\item{mmm}{A character scalar single extended mode property from \code{\link{mmm_props}()}.}
 
-\item{.ccc}{A character scalar single extended class property from \code{\link{ccc_props}()}.}
+\item{ccc}{A character scalar single extended class property from \code{\link{ccc_props}()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -703,25 +679,9 @@ Combo extended mode plus extended class combination properties are the combinati
 }
 \section{Functions}{
 \itemize{
-\item \code{mmm_ccc()}: Checks \code{x} for extended mode \code{.mmm} and for extended class \code{.ccc} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{mmm_ccc()}: Checks \code{x} for extended mode \code{mmm} and for extended class \code{ccc} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{mmm_ccc_funs()}: Lists all combo extended mode plus extended class property checking functions. Returns a character vector.
-
-\item \code{atm_arr()}: Checks \code{x} for atomicness-ness and for array-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_dtf()}: Checks \code{x} for atomicness-ness and for data.frame-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_gen()}: Checks \code{x} for atomicness-ness and for generic-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_mat()}: Checks \code{x} for atomicness-ness and for matrix-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_mvc()}: Checks \code{x} for atomicness-ness and for multivec-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_scl()}: Checks \code{x} for atomicness-ness and for scalar-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_vec()}: Checks \code{x} for atomicness-ness and for vec-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
-
-\item \code{atm_vls()}: Checks \code{x} for atomicness-ness and for vector-list-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{ch1_arr()}: Checks \code{x} for onechar-ness and for array-ness subject to any count/value restrictions in \code{...}. Returns a logical scalar.
 

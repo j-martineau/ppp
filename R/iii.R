@@ -55,9 +55,9 @@ is_iii_spec <- function(spec) {
 #' @describeIn iii_PROPS Checks `x` against the integrity property spec `spec`. Returns a logical scalar. See \code{\link{ppp}} for a definition of a property spec.
 #' @export
 III <- function(x, spec, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::is_iii_spec(spec)) {Errors <- base::c(Errors, '[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from iii_props().')}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::is_iii_spec(spec)) {errs <- base::c(errs, '[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from iii_props().')}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
   for (Prop in base::toupper(ppp::spec2props(spec))) {if (base::eval(base::parse(text = base::paste0('ppp:::.', Prop, '(x)')))) {return(T)}}
   F
 }

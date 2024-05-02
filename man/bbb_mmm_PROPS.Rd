@@ -64,7 +64,7 @@
 \usage{
 bbb_mmm_PROPS()
 
-bbb_mmm(x, .bbb, .mmm, ...)
+bbb_mmm(x, bbb, mmm, ...)
 
 bbb_mmm_funs()
 
@@ -181,9 +181,9 @@ pop_whl(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.bbb}{A character scalar single basic property from \code{c('atm', 'pop')}.}
+\item{bbb}{A character scalar single basic property from \code{c('atm', 'pop')}.}
 
-\item{.mmm}{A character scalar single extended mode property from \code{\link{mmm_props}()}.}
+\item{mmm}{A character scalar single extended mode property from \code{\link{mmm_props}()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -196,7 +196,7 @@ Check for combinations of \link[=bbb]{basic} and \link[=mmm]{extended mode} prop
 }
 \section{Functions}{
 \itemize{
-\item \code{bbb_mmm()}: Checks \code{x} against the basic property in \code{.bbb} and the extended mode property in \code{.mmm} subject to any count and/or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{bbb_mmm()}: Checks \code{x} against the basic property in \code{bbb} and the extended mode property in \code{mmm } subject to any count and/or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{bbb_mmm_funs()}: Lists all combo basic plus extended mode property checking functions. Returns a character vector.
 

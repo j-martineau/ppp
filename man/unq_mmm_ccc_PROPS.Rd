@@ -233,7 +233,7 @@
 \usage{
 unq_mmm_ccc_PROPS()
 
-unq_mmm_ccc(x, .mmm, .ccc, ...)
+unq_mmm_ccc(x, mmm, ccc, ...)
 
 unq_mmm_ccc_funs()
 
@@ -688,9 +688,9 @@ unq_whl_vls(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.mmm}{A character scalar single extended mode property from \code{\link{mmm_props}()}.}
+\item{mmm}{A character scalar single extended mode property from \code{\link{mmm_props}()}.}
 
-\item{.ccc}{A character scalar single extended class property from \code{\link{ccc_props}()}.}
+\item{ccc}{A character scalar single extended class property from \code{\link{ccc_props}()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -703,7 +703,7 @@ Combo uniqueness plus extended mode plus extended class combination properties a
 }
 \section{Functions}{
 \itemize{
-\item \code{unq_mmm_ccc()}: Checks \code{x} for uniqueness, for extended mode \code{.mmm}, and for extended class \code{.ccc} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{unq_mmm_ccc()}: Checks \code{x} for uniqueness, for extended mode \code{mmm}, and for extended class \code{ccc} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{unq_mmm_ccc_funs()}: Lists all combo uniqueness plus extended mode plus extended class property checking functions. Returns a character vector.
 

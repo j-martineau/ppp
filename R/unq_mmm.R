@@ -2,7 +2,7 @@
 #' @title Combo Uniqueness and Extended Mode Properties
 #' @description Functions for checking combinations of \link[=UNQ]{uniqueness} and \link[=mmm]{extended mode} subject to any count or value restrictions in `...`.
 #' @param x An R object.
-#' @param .mmm A character scalar extended mode property from \code{\link{mmm_props}()}`.
+#' @param mmm A character scalar extended mode property from \code{\link{mmm_props}()}`.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -66,9 +66,9 @@
 #' @export
 unq_mmm_PROPS <- function() {utils::help("unq_mmm_PROPS", package = "ppp")}
 
-#' @describeIn unq_mmm_PROPS Checks `x` for completened and against the extended mode in `.mmm` subject to any count and/or value restrictions in `.mmm`. Returns a logical scalar.
+#' @describeIn unq_mmm_PROPS Checks `x` for completened and against the extended mode in `mmm` subject to any count and/or value restrictions in `mmm`. Returns a logical scalar.
 #' @export
-unq_mmm <- function(x, .mmm, ...) {if (ppp::cmp_mmm(x, .mmm, ...)) {base::length(x) == base::length(base::unique(x))} else {F}}
+unq_mmm <- function(x, mmm, ...) {if (ppp::cmp_mmm(x, mmm, ...)) {base::length(x) == base::length(base::unique(x))} else {F}}
 
 #' @describeIn unq_mmm_PROPS Lists all combo uniqueness plus extended mode property checking functions. Returns a character vector.
 #' @export

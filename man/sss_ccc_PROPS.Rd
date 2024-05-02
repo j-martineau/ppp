@@ -37,7 +37,7 @@
 \usage{
 sss_ccc_PROPS()
 
-sss_ccc(x, .sss, .ccc, ...)
+sss_ccc(x, sss, ccc, ...)
 
 sss_ccc_funs()
 
@@ -100,9 +100,9 @@ sld_arr(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.sss}{A character scalar single basic property from \code{link{sss_props}()}.}
+\item{sss}{A character scalar single basic property from \code{link{sss_props}()}.}
 
-\item{.ccc}{A character scalar single extended class property from \code{link{ccc_props}()}}
+\item{ccc}{A character scalar single extended class property from \code{link{ccc_props}()}}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -123,7 +123,7 @@ Nonsensical combinations do not have corresponding \code{sss_ccc} property funct
 }
 \section{Functions}{
 \itemize{
-\item \code{sss_ccc()}: Checks \code{x} for a combination of the single shape property \code{.sss} and the single extended class property \code{.ccc} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{sss_ccc()}: Checks \code{x} for a combination of the single shape property \code{sss} and the single extended class property \code{ccc} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{sss_ccc_funs()}: Lists all shape-plus-extended class combo property checking functions. Returns a character vector.
 

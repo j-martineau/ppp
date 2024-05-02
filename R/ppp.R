@@ -19,10 +19,10 @@
 #'                `combo_from_spec`    \tab What are the constituent *combo* properties in a *flex* property spec?   \cr   \tab   \cr
 #'                `props_from_spec`    \tab What are the *unique* constituent *single* properties in a *flex* property spec?        }
 #' **Functions to check whether a value is a valid property spec**
-#' \tabular{ll}{  `is_prop_combo`   \tab Is `Combo` a valid *combo* property spec?                    \cr   \tab   \cr
-#'                `is_prop_spec`    \tab Is `Spec` a valid *flex* property spec?                      \cr   \tab   \cr
-#'                `is_prop_fun`     \tab Is `Fun` the name of a dedicated property checking function? \cr   \tab   \cr
-#'                `is_prop`         \tab Is `Prop` a valid *single* property?                                        }
+#' \tabular{ll}{  `is_prop_combo`   \tab Is `combo` a valid *combo* property spec?                    \cr   \tab   \cr
+#'                `is_prop_spec`    \tab Is `spec` a valid *flex* property spec?                      \cr   \tab   \cr
+#'                `is_prop_fun`     \tab Is `fun` the name of a dedicated property checking function? \cr   \tab   \cr
+#'                `is_prop`         \tab Is `prop` a valid *single* property?                                        }
 #' **Functions to define properties and property specs**
 #' \tabular{ll}{  `combo_concise`   \tab How is a *combo* property spec (concisely) defined?                       \cr   \tab   \cr
 #'                `spec_concise`    \tab How is an *options* property spec (concisely) defined?                    \cr   \tab   \cr
@@ -40,82 +40,82 @@
 #' \tabular{ll}{  `ppp`   \tab What are all of `x`'s *single* properties compiled from all property families? }
 #' For convenience, property functions from other function families are also described below.
 #' \cr\cr **Functions to list all** single **properties in a property family**
-#' \tabular{ll}{  `bbb_props`   \tab \link[=bbb]{basic}       \cr
-#'                `ccc_props`   \tab \link[=ccc]{xclass}      \cr
-#'                `ddd_props`   \tab \link[=ddd]{defined.D}   \cr
-#'                `eee_props`   \tab \link[=eee]{effective.D} \cr
-#'                `iii_props`   \tab \link[=iii]{integrity}   \cr
-#'                `mmm_props`   \tab \link[=mmm]{xmode}       \cr
-#'                `sss_props`   \tab \link[=sss]{shape}         }
+#' \tabular{ll}{  `bbb_props`   \tab \link[=bbb]{basic}                    \cr
+#'                `ccc_props`   \tab \link[=ccc]{extended class}           \cr
+#'                `ddd_props`   \tab \link[=ddd]{defined dimensionality}   \cr
+#'                `eee_props`   \tab \link[=eee]{effective dimensionality} \cr
+#'                `iii_props`   \tab \link[=iii]{integrity}                \cr
+#'                `mmm_props`   \tab \link[=mmm]{extended mode}            \cr
+#'                `sss_props`   \tab \link[=sss]{shape}                      }
 #' **Functions to list names of dedicated property-checking functions**
-#' \tabular{ll}{  `cmp_mmm_ccc_funs`   \tab integrity = `'cmp'` + xmode + xclass \cr
-#'                `unq_mmm_ccc_funs`   \tab integrity = `'unq'` + xmode + xclass \cr   \tab  }
-#' \tabular{ll}{  `cmp_ccc_funs`   \tab integrity = `'cmp'` + xclass \cr
-#'                `cmp_mmm_funs`   \tab integrity = `'cmp'` + xmode  \cr
-#'                `unq_ccc_funs`   \tab integrity = `'unq'` + xclass \cr
-#'                `unq_mmm_funs`   \tab integrity = `'unq'` + xmode  \cr
-#'                `bbb_ccc_funs`   \tab basic + xclass               \cr
-#'                `bbb_mmm_funs`   \tab basic + xmode                \cr
-#'                `mmm_ccc_funs`   \tab xmode + xclass               \cr   \tab  }
-#' \tabular{ll}{  `bbb_funs`   \tab \link[=bbb]{basic}       \cr
-#'                `ccc_funs`   \tab \link[=ccc]{xclass}      \cr
-#'                `ddd_funs`   \tab \link[=ddd]{defined.D}   \cr
-#'                `eee_funs`   \tab \link[=eee]{effective.D} \cr
-#'                `iii_funs`   \tab \link[=iii]{integrity}   \cr
-#'                `mmm_funs`   \tab \link[=mmm]{xmode}       \cr
-#'                `sss_funs`   \tab \link[=sss]{shape}         }
+#' \tabular{ll}{  `cmp_mmm_ccc_funs`   \tab integrity = `'cmp'` + extended mode + extended class \cr
+#'                `unq_mmm_ccc_funs`   \tab integrity = `'unq'` + extended mode + extended class \cr   \tab  }
+#' \tabular{ll}{  `cmp_ccc_funs`   \tab integrity = `'cmp'` + extended class \cr
+#'                `cmp_mmm_funs`   \tab integrity = `'cmp'` + extended mode  \cr
+#'                `unq_ccc_funs`   \tab integrity = `'unq'` + extended class \cr
+#'                `unq_mmm_funs`   \tab integrity = `'unq'` + extended mode  \cr
+#'                `bbb_ccc_funs`   \tab basic + extended class               \cr
+#'                `bbb_mmm_funs`   \tab basic + extended mode                \cr
+#'                `mmm_ccc_funs`   \tab extended mode + extended class       \cr   \tab  }
+#' \tabular{ll}{  `bbb_funs`   \tab \link[=bbb]{basic}                    \cr
+#'                `ccc_funs`   \tab \link[=ccc]{extended class}           \cr
+#'                `ddd_funs`   \tab \link[=ddd]{defined dimensionality}   \cr
+#'                `eee_funs`   \tab \link[=eee]{effective dimensionality} \cr
+#'                `iii_funs`   \tab \link[=iii]{integrity}                \cr
+#'                `mmm_funs`   \tab \link[=mmm]{extended mode}            \cr
+#'                `sss_funs`   \tab \link[=sss]{shape}                      }
 #' **Dedicated functions to check an object for a specific** combo **or** single **property**
-#' \cr\cr For these functions, `{bbb}`, `{ccc}`, `{ddd}`, `{eee}`, `{iii}`, `{mmm}`, and `{sss}` are placeholders for any given basic, xclass, defined.D, effective.D, integrity, xmode, and shape properties, respectively.
-#' \tabular{ll}{  `{bbb}`   \tab \link[=bbb]{basic} = `'{bbb}'`       \cr
-#'                `{ccc}`   \tab \link[=ccc]{xclass} = `'{ccc}'`      \cr
-#'                `{ddd}`   \tab \link[=ddd]{defined.D} = `'{ddd}'`   \cr
-#'                `{eee}`   \tab \link[=eee]{effective.D} = `'{eee}'` \cr
-#'                `{iii}`   \tab \link[=iii]{integrity} = `'{iii}'`   \cr
-#'                `{mmm}`   \tab \link[=mmm]{xmode} = `'{mmm}'`       \cr
-#'                `{sss}`   \tab \link[=sss]{shape} = `'{sss}'`       \cr   \tab  }
-#' \tabular{ll}{  `cmp_{ccc}`   \tab integrity = `'cmp'` + xclass = `'{ccc}'` \cr
-#'                `cmp_{mmm}`   \tab integrity = `'cmp'` + xmode = `'{mmm}'`  \cr
-#'                `unq_{ccc}`   \tab integrity = `'unq'` + xclass = `'{ccc}'` \cr
-#'                `unq_{mmm}`   \tab integrity = `'unq'` + xmode = `'{mmm}'`  \cr   \tab  }
-#' \tabular{ll}{  `{bbb}_{ccc}`   \tab basic = `'{bbb}'` + xclass = `'{ccc}'` \cr
-#'                `{bbb}_{mmm}`   \tab basic = `'{bbb}'` + xmode = `'{mmm}'`  \cr
-#'                `{mmm}_{ccc}`   \tab xmode = `'{mmm}'` + xclass = `'{ccc}'` \cr
-#'                `{sss}_{ccc}`   \tab shape = `'{sss}'` + xclass = `'{ccc}'` \cr   \tab  }
-#' \tabular{ll}{  `cmp_{mmm}_{ccc}`   \tab integrity = `'cmp'` + xmode = `'{mmm}'` + xclass = `'{ccc}'` \cr
-#'                `unq_{mmm}_{ccc}`   \tab integrity = `'unq'` + xmode = `'{mmm}'` + xclass = `'{ccc}'`   }
+#' \cr\cr For these functions, `{bbb}`, `{ccc}`, `{ddd}`, `{eee}`, `{iii}`, `{mmm}`, and `{sss}` are placeholders for any given basic, extended class, defined.D, effective.D, integrity, xmode, and shape properties, respectively.
+#' \tabular{ll}{  `{bbb}`   \tab \link[=bbb]{basic} = `'{bbb}'`                    \cr
+#'                `{ccc}`   \tab \link[=ccc]{extended class} = `'{ccc}'`           \cr
+#'                `{ddd}`   \tab \link[=ddd]{defined dimensionality} = `'{ddd}'`   \cr
+#'                `{eee}`   \tab \link[=eee]{effective dimensionality} = `'{eee}'` \cr
+#'                `{iii}`   \tab \link[=iii]{integrity} = `'{iii}'`                \cr
+#'                `{mmm}`   \tab \link[=mmm]{extended mode} = `'{mmm}'`            \cr
+#'                `{sss}`   \tab \link[=sss]{shape} = `'{sss}'`                    \cr   \tab  }
+#' \tabular{ll}{  `cmp_{ccc}`   \tab integrity = `'cmp'` + extended class = `'{ccc}'` \cr
+#'                `cmp_{mmm}`   \tab integrity = `'cmp'` + extended mode = `'{mmm}'`  \cr
+#'                `unq_{ccc}`   \tab integrity = `'unq'` + extended class = `'{ccc}'` \cr
+#'                `unq_{mmm}`   \tab integrity = `'unq'` + extended mode = `'{mmm}'`          \cr   \tab  }
+#' \tabular{ll}{  `{bbb}_{ccc}`   \tab basic = `'{bbb}'` + extended class = `'{ccc}'`         \cr
+#'                `{bbb}_{mmm}`   \tab basic = `'{bbb}'` + extended mode = `'{mmm}'`          \cr
+#'                `{mmm}_{ccc}`   \tab extended mode = `'{mmm}'` + extended class = `'{ccc}'` \cr
+#'                `{sss}_{ccc}`   \tab shape = `'{sss}'` + extended class = `'{ccc}'`         \cr   \tab  }
+#' \tabular{ll}{  `cmp_{mmm}_{ccc}`   \tab integrity = `'cmp'` + extended mode = `'{mmm}'` + extended class = `'{ccc}'` \cr
+#'                `unq_{mmm}_{ccc}`   \tab integrity = `'unq'` + extended mode = `'{mmm}'` + extended class = `'{ccc}'`   }
 #' **Functions to check an object against an arbitrary* combo *property spec**
 #' \cr\cr For these functions, an uppercase letter repeated three times is a placeholder for the value of an arbitrary single property from the associated property family.
-#' \tabular{ll}{  `bbb_ccc`   \tab basic property in arg `BBB` + xclass property in arg `CCC` \cr
-#'                `mmm_ccc`   \tab xmode property in arg `MMM` + xclass property in arg `CCC` \cr
-#'                `cmp_ccc`   \tab integrity = `'cmp'` + xclass property in arg `CCC`         \cr
-#'                `sss_ccc`   \tab shape property in arg `SSS` + xclass property in arg `CCC` \cr
-#'                `unq_ccc`   \tab integrity = `'unq'` + xclass property in arg `CCC`         \cr
-#'                `bbb_mmm`   \tab basic property in arg `BBB` + xmode property in arg `MMM`  \cr
-#'                `cmp_mmm`   \tab integrity = `'cmp'` + xmode property in arg `MMM`          \cr
-#'                `unq_mmm`   \tab integrity = `'unq'` + xmode property in arg `MMM`          \cr   \tab  }
-#' \tabular{ll}{  `cmp_mmm_ccc`   \tab integrity = `'cmp'` + xmode property in arg `MMM` + xclass property in arg `CCC` \cr   \tab   \cr
-#'                `unq_mmm_ccc`   \tab integrity = `'unq'` + xmode property in arg `MMM` + xclass property in arg `CCC` }
+#' \tabular{ll}{  `bbb_ccc`   \tab basic property in arg `bbb` + extended class property in arg `ccc`         \cr
+#'                `mmm_ccc`   \tab extended mode property in arg `mmm` + extended class property in arg `ccc` \cr
+#'                `cmp_ccc`   \tab integrity = `'cmp'` + extended class property in arg `ccc`                 \cr
+#'                `sss_ccc`   \tab shape property in arg `sss` + extended class property in arg `ccc`         \cr
+#'                `unq_ccc`   \tab integrity = `'unq'` + extended class property in arg `ccc`                 \cr
+#'                `bbb_mmm`   \tab basic property in arg `bbb` + extended mode property in arg `mmm`          \cr
+#'                `cmp_mmm`   \tab integrity = `'cmp'` + extended mode property in arg `mmm`                  \cr
+#'                `unq_mmm`   \tab integrity = `'unq'` + extended mode property in arg `mmm`                  \cr   \tab  }
+#' \tabular{ll}{  `cmp_mmm_ccc`   \tab integrity = `'cmp'` + extended mode property in arg `mmm` + extended class property in arg `ccc` \cr   \tab   \cr
+#'                `unq_mmm_ccc`   \tab integrity = `'unq'` + extended mode property in arg `mmm` + extended class property in arg `ccc` }
 #' **Functions to check objects against* flex *property specs in a single family**
-#' \tabular{ll}{  `BBB`   \tab \link[=bbb]{basic}       \cr
-#'                `CCC`   \tab \link[=ccc]{xclass}      \cr
-#'                `DDD`   \tab \link[=ddd]{defined.D}   \cr
-#'                `EEE`   \tab \link[=eee]{effective.D} \cr
-#'                `III`   \tab \link[=iii]{integrity}   \cr
-#'                `MMM`   \tab \link[=mmm]{xmode}       \cr
-#'                `SSS`   \tab \link[=sss]{shape}         }
+#' \tabular{ll}{  `BBB`   \tab \link[=bbb]{basic}                    \cr
+#'                `CCC`   \tab \link[=ccc]{extended class}           \cr
+#'                `DDD`   \tab \link[=ddd]{defined dimensionality}   \cr
+#'                `EEE`   \tab \link[=eee]{effective dimensionality} \cr
+#'                `III`   \tab \link[=iii]{integrity}                \cr
+#'                `MMM`   \tab \link[=mmm]{extended mode}            \cr
+#'                `SSS`   \tab \link[=sss]{shape}                      }
 #' **Functions to retrieve all of an object's* single *properties of a specific family**
-#' \tabular{ll}{  `bbb`   \tab \link[=bbb]{basic}       \cr
-#'                `ccc`   \tab \link[=ccc]{xclass}      \cr
-#'                `ddd`   \tab \link[=ddd]{defined.D}   \cr
-#'                `eee`   \tab \link[=eee]{effective.D} \cr
-#'                `iii`   \tab \link[=iii]{integrity}   \cr
-#'                `mmm`   \tab \link[=mmm]{xmode}       \cr
-#'                `sss`   \tab \link[=sss]{shape}         }
+#' \tabular{ll}{  `bbb`   \tab \link[=bbb]{basic}                    \cr
+#'                `ccc`   \tab \link[=ccc]{extended class}           \cr
+#'                `ddd`   \tab \link[=ddd]{defined dimensionality}   \cr
+#'                `eee`   \tab \link[=eee]{effective dimensionality} \cr
+#'                `iii`   \tab \link[=iii]{integrity}                \cr
+#'                `mmm`   \tab \link[=mmm]{extended mode}            \cr
+#'                `sss`   \tab \link[=sss]{shape}                      }
 #' @param x An R object.
 #' @param spec A \link[=cmp_chr_scl]{complete character scalar} containing one or more values from `ppp_vals()` separated by pipes and/or underscores. Combinations of properties can be specified by separating them with underscores. Separating properties or combinations of properties with pipes will result in a value of `TRUE` if any of them applies to `x`.
 #' @param as.dtf `TRUE` or `FALSE` indicating whether to return the result as a data.frame with column `1` containing property values and column `2` containing the property families.
-#' @param .valid A \link[=cmp_chr_vec]{complete character vec} containing all properties considered valid.
-#' @param .print `TRUE` or `FALSE` indicating whether to print the property definition to the console.
+#' @param valid A \link[=cmp_chr_vec]{complete character vec} containing all properties considered valid.
+#' @param print `TRUE` or `FALSE` indicating whether to print the property definition to the console.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -168,7 +168,7 @@ ppp_or_funs <- function() {base::c("na0_or", "nll_or")}
 #' @describeIn PROPS Lists all possible properties. Returns a sorted, lowercase, character vector.
 #' @export
 all_props <- function(as.dtf = F) {
-  if (!ppp:::.cmp_lgl_scl(as.dtf)) {ppp::stopperr("[as.dtf] must be TRUE or FALSE.", .pkg = "ppp")}
+  if (!ppp:::.cmp_lgl_scl(as.dtf)) {ppp::stopperr("[as.dtf] must be TRUE or FALSE.", pkg = "ppp")}
   bval <- ppp::bbb_props(); bfam <- base::rep("bbb", base::length(bval)); blab <- base::paste0("b_", bval)
   cval <- ppp::ccc_props(); cfam <- base::rep("ccc", base::length(cval)); clab <- base::paste0("c_", cval)
   dval <- ppp::ddd_props(); dfam <- base::rep("ddd", base::length(dval)); dlab <- base::paste0("d_", dval)
@@ -185,7 +185,7 @@ all_props <- function(as.dtf = F) {
 #' @describeIn PROPS Lists all possible property checking functions. Includes both single-property and combination property checking functions. Returns a sorted, lowercase, character vector.
 #' @export
 prop_funs <- function(as.dtf = F) {
-  if (!ppp:::.cmp_lgl_scl(as.dtf)) {ppp::stopperr("[as.dtf] must be TRUE or FALSE.", .pkg = "ppp")}
+  if (!ppp:::.cmp_lgl_scl(as.dtf)) {ppp::stopperr("[as.dtf] must be TRUE or FALSE.", pkg = "ppp")}
     bFun <-         ppp::bbb_funs();   bFam <- base::rep(        "bbb", base::length(  bFun));   bLab <- base::paste0("1_",   bFam, "_",   bFun)
     cFun <-         ppp::ccc_funs();   cFam <- base::rep(        "ccc", base::length(  cFun));   cLab <- base::paste0("1_",   cFam, "_",   cFun)
     dFun <-         ppp::ddd_funs();   dFam <- base::rep(        "ddd", base::length(  dFun));   dLab <- base::paste0("1_",   dFam, "_",   dFun)
@@ -204,19 +204,19 @@ prop_funs <- function(as.dtf = F) {
    umFun <-     ppp::unq_mmm_funs();  umFam <- base::rep(    "unq_mmm", base::length( umFun));  umLab <- base::paste0("4_",  umFam, "_",  umFun)
   cmcFun <- ppp::cmp_mmm_ccc_funs(); cmcFam <- base::rep("cmp_mmm_ccc", base::length(cmcFun)); cmcLab <- base::paste0("5_", cmcFam, "_", cmcFun)
   umcFun <- ppp::unq_mmm_ccc_funs(); umcFam <- base::rep("unq_mmm_ccc", base::length(umcFun)); umcLab <- base::paste0("5_", umcFam, "_", umcFun)
-  Fun <- base::c(bFun, cFun, dFun, eFun, iFun, mFun, sFun, orFun, bcFun, bmFun, mcFun, scFun, ccFun, cmFun, ucFun, umFun, cmcFun, umcFun)
-  Fam <- base::c(bFam, cFam, dFam, eFam, iFam, mFam, sFam, orFam, bcFam, bmFam, mcFam, scFam, ccFam, cmFam, ucFam, umFam, cmcFam, umcFam)
-  Ord <- base::c(bLab, cLab, dLab, eLab, iLab, mLab, sLab, orLab, bcLab, bmLab, mcLab, scLab, ccLab, cmLab, ucLab, umLab, cmcLab, umcLab)
-  Ord <- base::order(Ord)
-  Fun <- Fun[Ord]
-  Fam <- Fam[Ord]
-  if (!as.dtf) {base::unique(Fun[Ord])} else {base::unique(tibble::tibble(Family = Fam[Ord], Fun = Fun[Ord]))}
+  fun <- base::c(bFun, cFun, dFun, eFun, iFun, mFun, sFun, orFun, bcFun, bmFun, mcFun, scFun, ccFun, cmFun, ucFun, umFun, cmcFun, umcFun)
+  fam <- base::c(bFam, cFam, dFam, eFam, iFam, mFam, sFam, orFam, bcFam, bmFam, mcFam, scFam, ccFam, cmFam, ucFam, umFam, cmcFam, umcFam)
+  ord <- base::c(bLab, cLab, dLab, eLab, iLab, mLab, sLab, orLab, bcLab, bmLab, mcLab, scLab, ccLab, cmLab, ucLab, umLab, cmcLab, umcLab)
+  ord <- base::order(ord)
+  fun <- fun[ord]
+  fam <- fam[ord]
+  if (!as.dtf) {base::unique(fun[ord])} else {base::unique(tibble::tibble(Family = fam[ord], fun = fun[ord]))}
 }
 
 #' @describeIn PROPS Checks whether `x` is the name of a property checking function. Returns a logical scalar.
 #' @export
 is_prop_fun <- function(x) {
-  if (!ppp:::.cmp_chr_scl(x)) {ppp::stopperr("[x] must be a complete character scalar (?cmp_chr_scl).", .pkg = "ppp")}
+  if (!ppp:::.cmp_chr_scl(x)) {ppp::stopperr("[x] must be a complete character scalar (?cmp_chr_scl).", pkg = "ppp")}
   x %in% ppp::prop_funs()
 }
 
@@ -230,8 +230,8 @@ is_prop_combo <- function(x) {
   if (ppp:::.cmp_chr_scl(x)) {
     x <- ppp::av(base::strsplit(x, "|", fixed = T))
     if (base::length(x) == 1) {
-      Props <- ppp::uv(base::strsplit(x, "_", fixed = T))
-      if (base::length(base::unique(Props)) == base::length(Props)) {base::all(Props %in% ppp::all_props())}
+      props <- ppp::uv(base::strsplit(x, "_", fixed = T))
+      if (base::length(base::unique(props)) == base::length(props)) {base::all(props %in% ppp::all_props())}
       else {F}
     } else {F}
   } else {F}
@@ -241,25 +241,25 @@ is_prop_combo <- function(x) {
 #' @export
 is_prop_spec <- function(x) {
   if (ppp:::.cmp_chr_scl(x)) {
-    Combos <- ppp::av(base::strsplit(x, "|", fixed = T))
-    if (base::length(base::unique(Combos)) == base::length(Combos)) {
-      base::all(base::sapply(Combos, ppp::is_prop_combo) | base::sapply(Combos, ppp::is_prop))
+    combos <- ppp::av(base::strsplit(x, "|", fixed = T))
+    if (base::length(base::unique(combos)) == base::length(combos)) {
+      base::all(base::sapply(combos, ppp::is_prop_combo) | base::sapply(combos, ppp::is_prop))
     } else {F}
   } else {F}
 }
 
 #' @describeIn PROPS Converts a property spec to a unique list of its constituent single properties by splitting `x` along pipes and underscores, removing any blank values, sorting the remaining values, and returning the unique set of remaining values.
 #' @export
-props_from_spec <- function(x, .valid = all_props()) {
-  if (ppp::.cmp_chr_vec(.valid)) {okValid <- base::all(.valid %in% ppp::all_props())} else {okValid <- F}
+props_from_spec <- function(x, valid = all_props()) {
+  if (ppp::.cmp_chr_vec(valid)) {okValid <- base::all(valid %in% ppp::all_props())} else {okValid <- F}
   okSpec  <- ppp:::.cmp_chr_scl(x)
   errs  <- NULL
   if (!okSpec) {errs <- base::c(errs, "[x] must be a complete character scalar (?cmp_chr_scl).")}
-  if (!okValid) {errs <- base::c(errs, "[.valid] must be a complete character vector (?cmp_chr_vec) containing only values from all_props().")}
-  if (!base::is.null(errs)) {ppp::stopperr(errs, .pkg = "ppp")}
+  if (!okValid) {errs <- base::c(errs, "[valid] must be a complete character vector (?cmp_chr_vec) containing only values from all_props().")}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, pkg = "ppp")}
   singles <- ppp::spec2props(x)
-  if (base::length(singles) == 0) {ppp::stopperr("[x] is empty.", .pkg = "ppp")}
-  if (!base::all(singles %in% .valid)) {ppp::stopperr("The property spec [x] contains a property not in [.valid].", .pkg = "ppp")}
+  if (base::length(singles) == 0) {ppp::stopperr("[x] is empty.", pkg = "ppp")}
+  if (!base::all(singles %in% valid)) {ppp::stopperr("The property spec [x] contains a property not in [valid].", pkg = "ppp")}
   base::sort(base::unique(singles))
 }
 
@@ -269,25 +269,25 @@ combos_from_spec <- function(x) {base::sort(base::unique(ppp::spec2combos(x)))}
 
 #' @describeIn PROPS Converts a combined property spec into a vector of single properties. Returns a character vector.
 #' @export
-props_from_combo <- function(x) {if (base::length(ppp::spec2props(x)) == 1) {base::sort(base::unique(ppp::combo2props(x)))} else {ppp::stopperr("[x] contains more than one combination property.", .pkg = "ppp")}}
+props_from_combo <- function(x) {if (base::length(ppp::spec2props(x)) == 1) {base::sort(base::unique(ppp::combo2props(x)))} else {ppp::stopperr("[x] contains more than one combination property.", pkg = "ppp")}}
 
 #' @describeIn PROPS Checks `x` against the property spec `spec` subject to any count or value restrictions in `...`. Returns a logical scalar.
 #' @export
 PPP <- function(x, spec, ...) {
-  if (!ppp::is_prop_spec(spec)) {ppp::stopperr("[spec] specifies a property not in all_props().", .pkg = "ppp")}
+  if (!ppp::is_prop_spec(spec)) {ppp::stopperr("[spec] specifies a property not in all_props().", pkg = "ppp")}
   if (ppp::meets(x, ...)) {
-    AllProps <- ppp::all_props()
-    Combos   <- ppp::spec2combos(spec)
-    for (Combo in Combos) {
-      if (base::length(Combo) == 1) {IsOne <- Combo %in% AllProps} else {IsOne <- F}
-      IsFun <- ppp::is_prop_fun(Combo)
-      if (!IsOne & !IsFun) {
-        Singles <- ppp::combo2props(Combo)
-        Meets <- T
-        for (Prop in Singles) {if (Meets) {Meets <- Meets & base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(Prop), "(x)")))}}
-      } else if (IsOne) {Meets <- base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(Combo), "(x)")))}
-      else {Meets <- base::eval(base::parse(text = base::paste0("ppp::", Combo, "(x)")))}
-      if (Meets) {return(T)}
+    allProps <- ppp::all_props()
+    combos   <- ppp::spec2combos(spec)
+    for (combo in combos) {
+      if (base::length(combo) == 1) {isOne <- combo %in% allProps} else {isOne <- F}
+      isFun <- ppp::is_prop_fun(combo)
+      if (!isOne & !isFun) {
+        singles <- ppp::combo2props(combo)
+        meets <- T
+        for (prop in singles) {if (meets) {meets <- meets & base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(prop), "(x)")))}}
+      } else if (isOne) {meets <- base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(combo), "(x)")))}
+      else {meets <- base::eval(base::parse(text = base::paste0("ppp::", combo, "(x)")))}
+      if (meets) {return(T)}
   }}
   F
 }
@@ -376,51 +376,51 @@ prop_defs <- function() {
 
 #' @describeIn PROPS Converts the property spec `x` into a verbose description of each constituent (combo) property, identifying each constituent (combo) property as an alternative to the others. Returns a character scalar.
 #' @export
-prop_verbose <- function(x, .print = TRUE) {
-  Errors <- NULL
-  if (!ppp::is_prop(x)) {Errors <- base::c(Errors, "[x] must be a character scalar containing a single property spec.")}
+prop_verbose <- function(x, print = TRUE) {
+  errs <- NULL
+  if (!ppp::is_prop(x)) {errs <- base::c(errs, "[x] must be a character scalar containing a single property spec.")}
   x <- base::tolower(x)
-  if (!ppp:::.cmp_lgl_scl(.print)) {Errors <- base::c(Errors, "[.print] must be TRUE or FALSE.")}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .pkg = "ppp")}
+  if (!ppp:::.cmp_lgl_scl(print)) {errs <- base::c(errs, "[print] must be TRUE or FALSE.")}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, pkg = "ppp")}
   y <- ppp::prop_defs()
   if (!base::is.null(x)) {y <- base::paste0("\n Family: '", ppp::av(y$Family[y$Value == x]), "'"  ,
                                             "\n Value:  '", x, "'"                                ,
                                             "\n Short:   ", ppp::av(y$Short[y$Value == x])        ,
                                             "\n Long:    ", ppp::av(y$Long[y$Value == x]), ".\n\n")}
-  if (!.print) {y} else if (base::is.data.frame(y)) {base::print(y, n = base::nrow(y))} else {base::cat(y)}
+  if (!print) {y} else if (base::is.data.frame(y)) {base::print(y, n = base::nrow(y))} else {base::cat(y)}
 }
 
 #' @describeIn PROPS Converts the (combo) property `x` to a concise description.
 #' @export
 combo_concise <- function(x) {
-  if (!ppp::is_prop_combo(x)) {ppp::stopperr("[x] does not contain a valid property combo spec.", .pkg = "ppp")}
+  if (!ppp::is_prop_combo(x)) {ppp::stopperr("[x] does not contain a valid property combo spec.", pkg = "ppp")}
   x      <- ppp::combo2props(x)
-  Defs   <- ppp::prop_defs()
-  Family <- ppp::av(Defs$Family)
-  Value  <- ppp::av(Defs$Value)
-  Short  <- ppp::av(Defs$Short)
-  bbb    <- Short[Value %in% x & Family == "bbb"]
-  ccc    <- Short[Value %in% x & Family == "ccc"]
-  ddd    <- Short[Value %in% x & Family == "ddd"]
-  eee    <- Short[Value %in% x & Family == "eee"]
-  iii    <- Short[Value %in% x & Family == "iii"]
-  mmm    <- Short[Value %in% x & Family == "mmm"]
-  sss    <- Short[Value %in% x & Family == "sss"]
-  Object <- base::length(ccc) == 0
+  defs   <- ppp::prop_defs()
+  family <- ppp::av(defs$Family)
+  value  <- ppp::av(defs$Value)
+  short  <- ppp::av(defs$Short)
+  bbb    <- short[value %in% x & family == "bbb"]
+  ccc    <- short[value %in% x & family == "ccc"]
+  ddd    <- short[value %in% x & family == "ddd"]
+  eee    <- short[value %in% x & family == "eee"]
+  iii    <- short[value %in% x & family == "iii"]
+  mmm    <- short[value %in% x & family == "mmm"]
+  sss    <- short[value %in% x & family == "sss"]
+  obj    <- base::length(ccc) == 0
   y      <- base::paste0(base::c(bbb, ccc, ddd, eee, iii, mmm, sss), collapse = ", ")
   y      <- ppp::av(base::strsplit(y, ", ", fixed = T))
   y      <- y[!base::duplicated(y)]
   y      <- base::paste0(y, collapse = ", ")
-  if (Object) {y <- base::paste0(y, " object")}
-  if (base::substr(y, 1, 1) %in% base::c("a", "e", "i", "o", "u")) {Prefix <- "an "} else {Prefix <- "a "}
-  base::paste0(Prefix, y)
+  if (obj) {y <- base::paste0(y, " object")}
+  if (base::substr(y, 1, 1) %in% base::c("a", "e", "i", "o", "u")) {prefix <- "an "} else {prefix <- "a "}
+  base::paste0(prefix, y)
 }
 
 #' @describeIn PROPS Converts the property spec `x` to a concise description.
 #' @export
 spec_concise <- function(x) {
-  if (!ppp::is_prop_spec(x)) {ppp::stopperr("[x] is not a valid property spec.", .pkg = "ppp")}
-  Combos <- ppp::spec2combos(x)
-  for (i in 1:base::length(Combos)) {Combos[i] <- ppp::combo_concise(Combos[i])}
-  base::paste0(Combos, collapse = " OR ")
+  if (!ppp::is_prop_spec(x)) {ppp::stopperr("[x] is not a valid property spec.", pkg = "ppp")}
+  combos <- ppp::spec2combos(x)
+  for (i in 1:base::length(combos)) {combos[i] <- ppp::combo_concise(combos[i])}
+  base::paste0(combos, collapse = " OR ")
 }

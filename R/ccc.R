@@ -58,8 +58,8 @@ CCC <- function(x, spec, ...) {
   if (!ppp::is_ccc_spec(spec)) {errs <- base::c(errs, '[spec] must be a complete character vec (?cmp_chr_vec) containing (possible pipe-separated) values from ccc_props().')}
   if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
   if (ppp::meets(x, ...)) {
-    Props <- base::toupper(ppp::spec2props(spec))
-    for (Prop in Props) {if (base::eval(base::parse(text = base::paste0("ppp::.", Prop, "(x)")))) {return(T)}}
+    props <- base::toupper(ppp::spec2props(spec))
+    for (prop in props) {if (base::eval(base::parse(text = base::paste0("ppp::.", prop, "(x)")))) {return(T)}}
   }
   F
 }

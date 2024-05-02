@@ -5,14 +5,14 @@
 \alias{check_valid}
 \title{Check \code{x} Against valid Values and Against a Test}
 \usage{
-check_valid(x, test, .valid)
+check_valid(x, test, valid)
 }
 \arguments{
 \item{x}{An object.}
 
 \item{test}{A non-missing logical scalar.}
 
-\item{.valid}{Either \code{NULL} or an atomic vector of valid values.}
+\item{valid}{Either \code{NULL} or an atomic vector of valid values.}
 
 \item{return}{A logical scalar.}
 }

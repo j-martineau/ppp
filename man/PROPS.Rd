@@ -41,7 +41,7 @@ is_prop_combo(x)
 
 is_prop_spec(x)
 
-props_from_spec(x, .valid = all_props())
+props_from_spec(x, valid = all_props())
 
 combos_from_spec(x)
 
@@ -55,7 +55,7 @@ na0_or(x, spec, ...)
 
 prop_defs()
 
-prop_verbose(x, .print = TRUE)
+prop_verbose(x, print = TRUE)
 
 combo_concise(x)
 
@@ -66,7 +66,7 @@ spec_concise(x)
 
 \item{as.dtf}{\code{TRUE} or \code{FALSE} indicating whether to return the result as a data.frame with column \code{1} containing property values and column \code{2} containing the property families.}
 
-\item{.valid}{A \link[=cmp_chr_vec]{complete character vec} containing all properties considered valid.}
+\item{valid}{A \link[=cmp_chr_vec]{complete character vec} containing all properties considered valid.}
 
 \item{spec}{A \link[=cmp_chr_scl]{complete character scalar} containing one or more values from \code{ppp_vals()} separated by pipes and/or underscores. Combinations of properties can be specified by separating them with underscores. Separating properties or combinations of properties with pipes will result in a value of \code{TRUE} if any of them applies to \code{x}.}
 
@@ -76,7 +76,7 @@ spec_concise(x)
     \item{\code{}}{}
   }}
 
-\item{.print}{\code{TRUE} or \code{FALSE} indicating whether to print the property definition to the console.}
+\item{print}{\code{TRUE} or \code{FALSE} indicating whether to print the property definition to the console.}
 }
 \description{
 This family of functions brings together a variety of families defined in this and gives users the ability to manage object properties in a granular and concise manner.
@@ -100,10 +100,10 @@ This family uses concise and flexible \emph{property specs} as defined in the fo
   \code{combo_from_spec}    \tab What are the constituent \emph{combo} properties in a \emph{flex} property spec?   \cr   \tab   \cr
   \code{props_from_spec}    \tab What are the \emph{unique} constituent \emph{single} properties in a \emph{flex} property spec?        }
 \strong{Functions to check whether a value is a valid property spec}
-\tabular{ll}{  \code{is_prop_combo}   \tab Is \code{Combo} a valid \emph{combo} property spec?                    \cr   \tab   \cr
-  \code{is_prop_spec}    \tab Is \code{Spec} a valid \emph{flex} property spec?                      \cr   \tab   \cr
-  \code{is_prop_fun}     \tab Is \code{Fun} the name of a dedicated property checking function? \cr   \tab   \cr
-  \code{is_prop}         \tab Is \code{Prop} a valid \emph{single} property?                                        }
+\tabular{ll}{  \code{is_prop_combo}   \tab Is \code{combo} a valid \emph{combo} property spec?                    \cr   \tab   \cr
+  \code{is_prop_spec}    \tab Is \code{spec} a valid \emph{flex} property spec?                      \cr   \tab   \cr
+  \code{is_prop_fun}     \tab Is \code{fun} the name of a dedicated property checking function? \cr   \tab   \cr
+  \code{is_prop}         \tab Is \code{prop} a valid \emph{single} property?                                        }
 \strong{Functions to define properties and property specs}
 \tabular{ll}{  \code{combo_concise}   \tab How is a \emph{combo} property spec (concisely) defined?                       \cr   \tab   \cr
   \code{spec_concise}    \tab How is an \emph{options} property spec (concisely) defined?                    \cr   \tab   \cr
@@ -121,77 +121,77 @@ This family uses concise and flexible \emph{property specs} as defined in the fo
 \tabular{ll}{  \code{ppp}   \tab What are all of \code{x}'s \emph{single} properties compiled from all property families? }
 For convenience, property functions from other function families are also described below.
 \cr\cr \strong{Functions to list all} single \strong{properties in a property family}
-\tabular{ll}{  \code{bbb_props}   \tab \link[=bbb]{basic}       \cr
-  \code{ccc_props}   \tab \link[=ccc]{xclass}      \cr
-  \code{ddd_props}   \tab \link[=ddd]{defined.D}   \cr
-  \code{eee_props}   \tab \link[=eee]{effective.D} \cr
-  \code{iii_props}   \tab \link[=iii]{integrity}   \cr
-  \code{mmm_props}   \tab \link[=mmm]{xmode}       \cr
-  \code{sss_props}   \tab \link[=sss]{shape}         }
+\tabular{ll}{  \code{bbb_props}   \tab \link[=bbb]{basic}                    \cr
+  \code{ccc_props}   \tab \link[=ccc]{extended class}           \cr
+  \code{ddd_props}   \tab \link[=ddd]{defined dimensionality}   \cr
+  \code{eee_props}   \tab \link[=eee]{effective dimensionality} \cr
+  \code{iii_props}   \tab \link[=iii]{integrity}                \cr
+  \code{mmm_props}   \tab \link[=mmm]{extended mode}            \cr
+  \code{sss_props}   \tab \link[=sss]{shape}                      }
 \strong{Functions to list names of dedicated property-checking functions}
-\tabular{ll}{  \code{cmp_mmm_ccc_funs}   \tab integrity = \code{'cmp'} + xmode + xclass \cr
-  \code{unq_mmm_ccc_funs}   \tab integrity = \code{'unq'} + xmode + xclass \cr   \tab  }
-\tabular{ll}{  \code{cmp_ccc_funs}   \tab integrity = \code{'cmp'} + xclass \cr
-  \code{cmp_mmm_funs}   \tab integrity = \code{'cmp'} + xmode  \cr
-  \code{unq_ccc_funs}   \tab integrity = \code{'unq'} + xclass \cr
-  \code{unq_mmm_funs}   \tab integrity = \code{'unq'} + xmode  \cr
-  \code{bbb_ccc_funs}   \tab basic + xclass               \cr
-  \code{bbb_mmm_funs}   \tab basic + xmode                \cr
-  \code{mmm_ccc_funs}   \tab xmode + xclass               \cr   \tab  }
-\tabular{ll}{  \code{bbb_funs}   \tab \link[=bbb]{basic}       \cr
-  \code{ccc_funs}   \tab \link[=ccc]{xclass}      \cr
-  \code{ddd_funs}   \tab \link[=ddd]{defined.D}   \cr
-  \code{eee_funs}   \tab \link[=eee]{effective.D} \cr
-  \code{iii_funs}   \tab \link[=iii]{integrity}   \cr
-  \code{mmm_funs}   \tab \link[=mmm]{xmode}       \cr
-  \code{sss_funs}   \tab \link[=sss]{shape}         }
+\tabular{ll}{  \code{cmp_mmm_ccc_funs}   \tab integrity = \code{'cmp'} + extended mode + extended class \cr
+  \code{unq_mmm_ccc_funs}   \tab integrity = \code{'unq'} + extended mode + extended class \cr   \tab  }
+\tabular{ll}{  \code{cmp_ccc_funs}   \tab integrity = \code{'cmp'} + extended class \cr
+  \code{cmp_mmm_funs}   \tab integrity = \code{'cmp'} + extended mode  \cr
+  \code{unq_ccc_funs}   \tab integrity = \code{'unq'} + extended class \cr
+  \code{unq_mmm_funs}   \tab integrity = \code{'unq'} + extended mode  \cr
+  \code{bbb_ccc_funs}   \tab basic + extended class               \cr
+  \code{bbb_mmm_funs}   \tab basic + extended mode                \cr
+  \code{mmm_ccc_funs}   \tab extended mode + extended class       \cr   \tab  }
+\tabular{ll}{  \code{bbb_funs}   \tab \link[=bbb]{basic}                    \cr
+  \code{ccc_funs}   \tab \link[=ccc]{extended class}           \cr
+  \code{ddd_funs}   \tab \link[=ddd]{defined dimensionality}   \cr
+  \code{eee_funs}   \tab \link[=eee]{effective dimensionality} \cr
+  \code{iii_funs}   \tab \link[=iii]{integrity}                \cr
+  \code{mmm_funs}   \tab \link[=mmm]{extended mode}            \cr
+  \code{sss_funs}   \tab \link[=sss]{shape}                      }
 \strong{Dedicated functions to check an object for a specific} combo \strong{or} single \strong{property}
-\cr\cr For these functions, \code{{bbb}}, \code{{ccc}}, \code{{ddd}}, \code{{eee}}, \code{{iii}}, \code{{mmm}}, and \code{{sss}} are placeholders for any given basic, xclass, defined.D, effective.D, integrity, xmode, and shape properties, respectively.
-\tabular{ll}{  \code{{bbb}}   \tab \link[=bbb]{basic} = \code{'{bbb}'}       \cr
-  \code{{ccc}}   \tab \link[=ccc]{xclass} = \code{'{ccc}'}      \cr
-  \code{{ddd}}   \tab \link[=ddd]{defined.D} = \code{'{ddd}'}   \cr
-  \code{{eee}}   \tab \link[=eee]{effective.D} = \code{'{eee}'} \cr
-  \code{{iii}}   \tab \link[=iii]{integrity} = \code{'{iii}'}   \cr
-  \code{{mmm}}   \tab \link[=mmm]{xmode} = \code{'{mmm}'}       \cr
-  \code{{sss}}   \tab \link[=sss]{shape} = \code{'{sss}'}       \cr   \tab  }
-\tabular{ll}{  \verb{cmp_\{ccc\}}   \tab integrity = \code{'cmp'} + xclass = \code{'{ccc}'} \cr
-  \verb{cmp_\{mmm\}}   \tab integrity = \code{'cmp'} + xmode = \code{'{mmm}'}  \cr
-  \verb{unq_\{ccc\}}   \tab integrity = \code{'unq'} + xclass = \code{'{ccc}'} \cr
-  \verb{unq_\{mmm\}}   \tab integrity = \code{'unq'} + xmode = \code{'{mmm}'}  \cr   \tab  }
-\tabular{ll}{  \verb{\{bbb\}_\{ccc\}}   \tab basic = \code{'{bbb}'} + xclass = \code{'{ccc}'} \cr
-  \verb{\{bbb\}_\{mmm\}}   \tab basic = \code{'{bbb}'} + xmode = \code{'{mmm}'}  \cr
-  \verb{\{mmm\}_\{ccc\}}   \tab xmode = \code{'{mmm}'} + xclass = \code{'{ccc}'} \cr
-  \verb{\{sss\}_\{ccc\}}   \tab shape = \code{'{sss}'} + xclass = \code{'{ccc}'} \cr   \tab  }
-\tabular{ll}{  \verb{cmp_\{mmm\}_\{ccc\}}   \tab integrity = \code{'cmp'} + xmode = \code{'{mmm}'} + xclass = \code{'{ccc}'} \cr
-  \verb{unq_\{mmm\}_\{ccc\}}   \tab integrity = \code{'unq'} + xmode = \code{'{mmm}'} + xclass = \code{'{ccc}'}   }
+\cr\cr For these functions, \code{{bbb}}, \code{{ccc}}, \code{{ddd}}, \code{{eee}}, \code{{iii}}, \code{{mmm}}, and \code{{sss}} are placeholders for any given basic, extended class, defined.D, effective.D, integrity, xmode, and shape properties, respectively.
+\tabular{ll}{  \code{{bbb}}   \tab \link[=bbb]{basic} = \code{'{bbb}'}                    \cr
+  \code{{ccc}}   \tab \link[=ccc]{extended class} = \code{'{ccc}'}           \cr
+  \code{{ddd}}   \tab \link[=ddd]{defined dimensionality} = \code{'{ddd}'}   \cr
+  \code{{eee}}   \tab \link[=eee]{effective dimensionality} = \code{'{eee}'} \cr
+  \code{{iii}}   \tab \link[=iii]{integrity} = \code{'{iii}'}                \cr
+  \code{{mmm}}   \tab \link[=mmm]{extended mode} = \code{'{mmm}'}            \cr
+  \code{{sss}}   \tab \link[=sss]{shape} = \code{'{sss}'}                    \cr   \tab  }
+\tabular{ll}{  \verb{cmp_\{ccc\}}   \tab integrity = \code{'cmp'} + extended class = \code{'{ccc}'} \cr
+  \verb{cmp_\{mmm\}}   \tab integrity = \code{'cmp'} + extended mode = \code{'{mmm}'}  \cr
+  \verb{unq_\{ccc\}}   \tab integrity = \code{'unq'} + extended class = \code{'{ccc}'} \cr
+  \verb{unq_\{mmm\}}   \tab integrity = \code{'unq'} + extended mode = \code{'{mmm}'}          \cr   \tab  }
+\tabular{ll}{  \verb{\{bbb\}_\{ccc\}}   \tab basic = \code{'{bbb}'} + extended class = \code{'{ccc}'}         \cr
+  \verb{\{bbb\}_\{mmm\}}   \tab basic = \code{'{bbb}'} + extended mode = \code{'{mmm}'}          \cr
+  \verb{\{mmm\}_\{ccc\}}   \tab extended mode = \code{'{mmm}'} + extended class = \code{'{ccc}'} \cr
+  \verb{\{sss\}_\{ccc\}}   \tab shape = \code{'{sss}'} + extended class = \code{'{ccc}'}         \cr   \tab  }
+\tabular{ll}{  \verb{cmp_\{mmm\}_\{ccc\}}   \tab integrity = \code{'cmp'} + extended mode = \code{'{mmm}'} + extended class = \code{'{ccc}'} \cr
+  \verb{unq_\{mmm\}_\{ccc\}}   \tab integrity = \code{'unq'} + extended mode = \code{'{mmm}'} + extended class = \code{'{ccc}'}   }
 \emph{\emph{Functions to check an object against an arbitrary} combo \emph{property spec}}
 \cr\cr For these functions, an uppercase letter repeated three times is a placeholder for the value of an arbitrary single property from the associated property family.
-\tabular{ll}{  \code{bbb_ccc}   \tab basic property in arg \code{BBB} + xclass property in arg \code{CCC} \cr
-  \code{mmm_ccc}   \tab xmode property in arg \code{MMM} + xclass property in arg \code{CCC} \cr
-  \code{cmp_ccc}   \tab integrity = \code{'cmp'} + xclass property in arg \code{CCC}         \cr
-  \code{sss_ccc}   \tab shape property in arg \code{SSS} + xclass property in arg \code{CCC} \cr
-  \code{unq_ccc}   \tab integrity = \code{'unq'} + xclass property in arg \code{CCC}         \cr
-  \code{bbb_mmm}   \tab basic property in arg \code{BBB} + xmode property in arg \code{MMM}  \cr
-  \code{cmp_mmm}   \tab integrity = \code{'cmp'} + xmode property in arg \code{MMM}          \cr
-  \code{unq_mmm}   \tab integrity = \code{'unq'} + xmode property in arg \code{MMM}          \cr   \tab  }
-\tabular{ll}{  \code{cmp_mmm_ccc}   \tab integrity = \code{'cmp'} + xmode property in arg \code{MMM} + xclass property in arg \code{CCC} \cr   \tab   \cr
-  \code{unq_mmm_ccc}   \tab integrity = \code{'unq'} + xmode property in arg \code{MMM} + xclass property in arg \code{CCC} }
+\tabular{ll}{  \code{bbb_ccc}   \tab basic property in arg \code{bbb} + extended class property in arg \code{ccc}         \cr
+  \code{mmm_ccc}   \tab extended mode property in arg \code{mmm} + extended class property in arg \code{ccc} \cr
+  \code{cmp_ccc}   \tab integrity = \code{'cmp'} + extended class property in arg \code{ccc}                 \cr
+  \code{sss_ccc}   \tab shape property in arg \code{sss} + extended class property in arg \code{ccc}         \cr
+  \code{unq_ccc}   \tab integrity = \code{'unq'} + extended class property in arg \code{ccc}                 \cr
+  \code{bbb_mmm}   \tab basic property in arg \code{bbb} + extended mode property in arg \code{mmm}          \cr
+  \code{cmp_mmm}   \tab integrity = \code{'cmp'} + extended mode property in arg \code{mmm}                  \cr
+  \code{unq_mmm}   \tab integrity = \code{'unq'} + extended mode property in arg \code{mmm}                  \cr   \tab  }
+\tabular{ll}{  \code{cmp_mmm_ccc}   \tab integrity = \code{'cmp'} + extended mode property in arg \code{mmm} + extended class property in arg \code{ccc} \cr   \tab   \cr
+  \code{unq_mmm_ccc}   \tab integrity = \code{'unq'} + extended mode property in arg \code{mmm} + extended class property in arg \code{ccc} }
 \emph{\emph{Functions to check objects against} flex \emph{property specs in a single family}}
-\tabular{ll}{  \code{BBB}   \tab \link[=bbb]{basic}       \cr
-  \code{CCC}   \tab \link[=ccc]{xclass}      \cr
-  \code{DDD}   \tab \link[=ddd]{defined.D}   \cr
-  \code{EEE}   \tab \link[=eee]{effective.D} \cr
-  \code{III}   \tab \link[=iii]{integrity}   \cr
-  \code{MMM}   \tab \link[=mmm]{xmode}       \cr
-  \code{SSS}   \tab \link[=sss]{shape}         }
+\tabular{ll}{  \code{BBB}   \tab \link[=bbb]{basic}                    \cr
+  \code{CCC}   \tab \link[=ccc]{extended class}           \cr
+  \code{DDD}   \tab \link[=ddd]{defined dimensionality}   \cr
+  \code{EEE}   \tab \link[=eee]{effective dimensionality} \cr
+  \code{III}   \tab \link[=iii]{integrity}                \cr
+  \code{MMM}   \tab \link[=mmm]{extended mode}            \cr
+  \code{SSS}   \tab \link[=sss]{shape}                      }
 \emph{\emph{Functions to retrieve all of an object's} single \emph{properties of a specific family}}
-\tabular{ll}{  \code{bbb}   \tab \link[=bbb]{basic}       \cr
-  \code{ccc}   \tab \link[=ccc]{xclass}      \cr
-  \code{ddd}   \tab \link[=ddd]{defined.D}   \cr
-  \code{eee}   \tab \link[=eee]{effective.D} \cr
-  \code{iii}   \tab \link[=iii]{integrity}   \cr
-  \code{mmm}   \tab \link[=mmm]{xmode}       \cr
-  \code{sss}   \tab \link[=sss]{shape}         }
+\tabular{ll}{  \code{bbb}   \tab \link[=bbb]{basic}                    \cr
+  \code{ccc}   \tab \link[=ccc]{extended class}           \cr
+  \code{ddd}   \tab \link[=ddd]{defined dimensionality}   \cr
+  \code{eee}   \tab \link[=eee]{effective dimensionality} \cr
+  \code{iii}   \tab \link[=iii]{integrity}                \cr
+  \code{mmm}   \tab \link[=mmm]{extended mode}            \cr
+  \code{sss}   \tab \link[=sss]{shape}                      }
 }
 \section{Functions}{
 \itemize{

@@ -1,6 +1,6 @@
 #' @encoding UTF-8
 #' @family utils
-#' @title Checks for Meta-Errors in Value-Restriction Arguments, If There Are Any
+#' @title Checks for Meta-Errors in Count and/or Value-Restriction Arguments, If There Are Any
 #' @description Checks whether any count- or value-restrictions are carried in `...` arguments. If so, evaluates whether those restriction arguments are valid. If not, throws errors describing invalid restriction arguments.
 #' @inheritParams meets
 #' @inheritDotParams meets
@@ -9,60 +9,60 @@
 #' @export
 meets_errs <- function(x, ...) {
   if (base::...length() == 0) {return(NULL)}
-  Dots <- base::list(...)
-  Names <- base::names(Dots)
-  Valid <- base::c('.N', '.NR', '.NC', '.MIN', '.MINR', '.MINC', '.MAX', '.MAXR', '.MAXC', '.VALS', '.LT', '.LE', '.GE', '.GT')
-  Errors <- NULL
-  if (base::length(Names) != base::length(Dots)) {Errors <- base::c(Errors, "All [...] arguments must be named.")}
-  if (base::length(Names) != base::length(base::unique(Names))) {Errors <- base::c(Errors, "Names of [...] arguments must be unique.")}
-  if (!base::all(Names %in% Valid)) {Errors <- base::c(Errors, base::paste0("All names of [...] arguments must be from c('.N', '.NR', '.NC', '.MIN', '.MINR', '.MINC', '.MAX', '.MAXR', '.MAXC', '.VALS', '.LT', '.LE', '.GE', '.GT')."))}
-  if (!base::is.null(Errors)) {ppp::stopper(Errors, .FUN = "meets", .PKG = "ppp")}
-  if (".N" %in% Names) {if (!ppp:::.cmp_nnw_vec(Dots$.N)) {Errors <- base::c(Errors, "[.N] must be a non-negative whole-number vector (?ppp::cmp_nnw_vec) if supplied.")}}
-  if (".MIN" %in% Names) {if (!ppp:::cmp_nnw_scl(Dots$.MIN)) {Errors <- base::c(Errors, "[.MIN] must be a non-negative whole-number scalar (?ppp::cmp_nnw_scl) if supplied.")}}
-  if (".MAX" %in% Names) {if (!ppp:::cmp_nnw_scl(Dots$.MAX)) {Errors <- base::c(Errors, "[.MAX] must be a non-negative whole-number scalar (?ppp::cmp_nnw_scl) if supplied.")}}
-  if (".NR" %in% Names) {
-    if (!base::is.data.frame(x) & !is.matrix(x)) {Errors <- base::c(Errors, "[x] must be a data.frame or matrix when [.NR] is supplied")}
-    if (!ppp:::.cmp_nnw_vec(Dots$.NR)) {Errors <- base::c(Errors, "[.NR] must be a non-negative whole-number vector (?ppp::cmp_nnw_vec) if supplied.")}
+  dots <- base::list(...)
+  names <- base::names(dots)
+  valid <- base::c('.n', '.nr', '.nc', '.min', '.minr', '.minc', '.max', '.maxr', '.maxc', '.vals', '.lt', '.le', '.ge', '.gt')
+  errors <- NULL
+  if (base::length(names) != base::length(dots)) {errors <- base::c(errors, "All [...] arguments must be named.")}
+  if (base::length(names) != base::length(base::unique(names))) {errors <- base::c(errors, "names of [...] arguments must be unique.")}
+  if (!base::all(names %in% valid)) {errors <- base::c(errors, base::paste0("All names of [...] arguments must be from c('.n', '.nr', '.nc', '.min', '.minr', '.minc', '.max', '.maxr', '.maxc', '.vals', '.lt', '.le', '.ge', '.gt')."))}
+  if (!base::is.null(errors)) {ppp::stopper(errors, fun = "meets", pkg = "ppp")}
+  if (".n" %in% names) {if (!ppp:::.cmp_nnw_vec(dots$.n)) {errors <- base::c(errors, "[.n] must be a non-negative whole-number vector (?cmp_nnw_vec) if supplied.")}}
+  if (".min" %in% names) {if (!ppp:::cmp_nnw_scl(dots$.min)) {errors <- base::c(errors, "[.min] must be a non-negative whole-number scalar (?cmp_nnw_scl) if supplied.")}}
+  if (".max" %in% names) {if (!ppp:::cmp_nnw_scl(dots$.max)) {errors <- base::c(errors, "[.max] must be a non-negative whole-number scalar (?cmp_nnw_scl) if supplied.")}}
+  if (".nr" %in% names) {
+    if (!base::is.data.frame(x) & !is.matrix(x)) {errors <- base::c(errors, "[x] must be a data.frame or matrix when [.nr] is supplied")}
+    if (!ppp:::.cmp_nnw_vec(dots$.nr)) {errors <- base::c(errors, "[.nr] must be a non-negative whole-number vector (?cmp_nnw_vec) if supplied.")}
   }
-  if (".MINR" %in% Names) {
-    if (!base::is.data.frame(x) & !is.matrix(x)) {Errors <- base::c(Errors, "[x] must be a data.frame or matrix when [.MINR] is supplied")}
-    if (!ppp:::cmp_nnw_scl(Dots$.MINR)) {Errors <- base::c(Errors, "[.MINR] must be a non-negative whole-number scalar (?ppp::cmp_nnw_scl) if supplied.")}
+  if (".minr" %in% names) {
+    if (!base::is.data.frame(x) & !is.matrix(x)) {errors <- base::c(errors, "[x] must be a data.frame or matrix when [.minr] is supplied")}
+    if (!ppp:::cmp_nnw_scl(dots$.minr)) {errors <- base::c(errors, "[.minr] must be a non-negative whole-number scalar (?cmp_nnw_scl) if supplied.")}
   }
-  if (".MAXR" %in% Names) {
-    if (!base::is.data.frame(x) & !is.matrix(x)) {Errors <- base::c(Errors, "[x] must be a data.frame or matrix when [.MAXR] is supplied")}
-    if (!ppp:::cmp_nnw_scl(Dots$.MAXR)) {Errors <- base::c(Errors, "[.MAXR] must be a non-negative whole-number scalar (?ppp::cmp_nnw_scl) if supplied.")}
+  if (".maxr" %in% names) {
+    if (!base::is.data.frame(x) & !is.matrix(x)) {errors <- base::c(errors, "[x] must be a data.frame or matrix when [.maxr] is supplied")}
+    if (!ppp:::cmp_nnw_scl(dots$.maxr)) {errors <- base::c(errors, "[.maxr] must be a non-negative whole-number scalar (?cmp_nnw_scl) if supplied.")}
   }
-  if (".NC" %in% Names) {
-    if (!base::is.data.frame(x) & !is.matrix(x)) {Errors <- base::c(Errors, "[x] must be a data.frame or matrix when [.NC] is supplied")}
-    if (!ppp:::.cmp_nnw_vec(Dots$.NC)) {Errors <- base::c(Errors, "[.NC] must be a non-negative whole-number vector (?ppp::cmp_nnw_vec) if supplied.")}
+  if (".nc" %in% names) {
+    if (!base::is.data.frame(x) & !is.matrix(x)) {errors <- base::c(errors, "[x] must be a data.frame or matrix when [.nc] is supplied")}
+    if (!ppp:::.cmp_nnw_vec(dots$.nc)) {errors <- base::c(errors, "[.nc] must be a non-negative whole-number vector (?cmp_nnw_vec) if supplied.")}
   }
-  if (".MINC" %in% Names) {
-    if (!base::is.data.frame(x) & !is.matrix(x)) {Errors <- base::c(Errors, "[x] must be a data.frame or matrix when [.MINC] is supplied")}
-    if (!ppp:::cmp_nnw_scl(Dots$.MINC)) {Errors <- base::c(Errors, "[.MINC] must be a non-negative whole-number scalar (?ppp::cmp_nnw_scl) if supplied.")}
+  if (".minc" %in% names) {
+    if (!base::is.data.frame(x) & !is.matrix(x)) {errors <- base::c(errors, "[x] must be a data.frame or matrix when [.minc] is supplied")}
+    if (!ppp:::cmp_nnw_scl(dots$.minc)) {errors <- base::c(errors, "[.minc] must be a non-negative whole-number scalar (?cmp_nnw_scl) if supplied.")}
   }
-  if (".MAXC" %in% Names) {
-    if (!base::is.data.frame(x) & !is.matrix(x)) {Errors <- base::c(Errors, "[x] must be a data.frame or matrix when [.MAXC] is supplied")}
-    if (!ppp:::cmp_nnw_scl(Dots$.MAXC)) {Errors <- base::c(Errors, "[.MAXC] must be a non-negative whole-number scalar (?ppp::cmp_nnw_scl) if supplied.")}
+  if (".maxc" %in% names) {
+    if (!base::is.data.frame(x) & !is.matrix(x)) {errors <- base::c(errors, "[x] must be a data.frame or matrix when [.maxc] is supplied")}
+    if (!ppp:::cmp_nnw_scl(dots$.maxc)) {errors <- base::c(errors, "[.maxc] must be a non-negative whole-number scalar (?cmp_nnw_scl) if supplied.")}
   }
-  if (".VALS" %in% Names) {
-    if (!ppp:::.cmp_atm_vec(Dots$.VALS)) {Errors <- base::c(Errors, "[.VALS] must be a complete atomic vector (?ppp::cmp_atm_vec) if supplied.")}
-    else if (!ppp:::.compat(x, Dots$.VALS)) {Errors <- base::c(Errors, "[x] and [.VALS] must be compatible modes.")}
+  if (".vals" %in% names) {
+    if (!ppp:::.cmp_atm_vec(dots$.vals)) {errors <- base::c(errors, "[.vals] must be a complete atomic vector (?cmp_atm_vec) if supplied.")}
+    else if (!ppp:::.compat(x, dots$.vals)) {errors <- base::c(errors, "[x] and [.vals] must be compatible modes.")}
   }
-  if (".LT" %in% Names) {
-    if (!ppp:::.cmp_srt_scl(Dots$.LT)) {Errors <- base::c(Errors, "[.LT] must be a complete sortable scalar (?ppp::cmp_srt_scl).")}
-    else if (!ppp:::.compar(x, Dots$.LT)) {Errors <- base::c(Errors, "[x] and [.LT] must be of comparable, sortable modes.")}
+  if (".lt" %in% names) {
+    if (!ppp:::.cmp_srt_scl(dots$.lt)) {errors <- base::c(errors, "[.lt] must be a complete sortable scalar (?cmp_srt_scl).")}
+    else if (!ppp:::.compar(x, dots$.lt)) {errors <- base::c(errors, "[x] and [.lt] must be of comparable, sortable modes.")}
   }
-  if (".LE" %in% Names) {
-    if (!ppp:::.cmp_srt_scl(Dots$.LE)) {Errors <- base::c(Errors, "[.LE] must be a complete sortable scalar (?ppp::cmp_srt_scl).")}
-    else if (!ppp:::.compar(x, Dots$.LE)) {Errors <- base::c(Errors, "[x] and [.LE] must be of comparable, sortable modes.")}
+  if (".le" %in% names) {
+    if (!ppp:::.cmp_srt_scl(dots$.le)) {errors <- base::c(errors, "[.le] must be a complete sortable scalar (?cmp_srt_scl).")}
+    else if (!ppp:::.compar(x, dots$.le)) {errors <- base::c(errors, "[x] and [.le] must be of comparable, sortable modes.")}
   }
-  if (".GE" %in% Names) {
-    if (!ppp:::.cmp_srt_scl(Dots$.GE)) {Errors <- base::c(Errors, "[.GE] must be a complete sortable scalar (?ppp::cmp_srt_scl).")}
-    else if (!ppp:::.compar(x, Dots$.GE)) {Errors <- base::c(Errors, "[x] and [.VALS] must be of comparable, sortable modes.")}
+  if (".ge" %in% names) {
+    if (!ppp:::.cmp_srt_scl(dots$.ge)) {errors <- base::c(errors, "[.ge] must be a complete sortable scalar (?cmp_srt_scl).")}
+    else if (!ppp:::.compar(x, dots$.ge)) {errors <- base::c(errors, "[x] and [.vals] must be of comparable, sortable modes.")}
   }
-  if (".GT" %in% Names) {
-    if (!ppp:::.cmp_srt_scl(Dots$.GT)) {Errors <- base::c(Errors, "[.GT] must be a complete sortable scalar (?ppp::cmp_srt_scl).")}
-    else if (!ppp:::.compar(x, Dots$.GT)) {Errors <- base::c(Errors, "[x] and [.GT] must be of comparable, sortable modes.")}
+  if (".gt" %in% names) {
+    if (!ppp:::.cmp_srt_scl(dots$.gt)) {errors <- base::c(errors, "[.gt] must be a complete sortable scalar (?cmp_srt_scl).")}
+    else if (!ppp:::.compar(x, dots$.gt)) {errors <- base::c(errors, "[x] and [.gt] must be of comparable, sortable modes.")}
   }
-  if (!base::is.null(Errors)) {ppp::stopper(Errors, .FUN = "meets", .PKG = "ppp")}
+  if (!base::is.null(errors)) {ppp::stopper(errors, .FUN = "meets", .PKG = "ppp")}
 }

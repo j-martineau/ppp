@@ -3,8 +3,8 @@
 #' @title Combo Extended Mode Plus Extended Class Combination Properties
 #' @description Combo extended mode plus extended class combination properties are the combination of a single \link[=mmm]{extended mode} property, and a single \link[=ccc]{extended class} property.
 #' @param x An R object.
-#' @param .mmm A character scalar single extended mode property from \code{\link{mmm_props}()}.
-#' @param .ccc A character scalar single extended class property from \code{\link{ccc_props}()}.
+#' @param mmm A character scalar single extended mode property from \code{\link{mmm_props}()}.
+#' @param ccc A character scalar single extended class property from \code{\link{ccc_props}()}.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @examples
@@ -16,16 +16,21 @@
 #' @export
 mmm_ccc_PROPS <- function() {utils::help("mmm_ccc_PROPS", package = "ppp")}
 
-#' @describeIn mmm_ccc_PROPS Checks `x` for extended mode `.mmm` and for extended class `.ccc` subject to any count or value restrictions in `...`. Returns a logical scalar.
+#' @describeIn mmm_ccc_PROPS Checks `x` for extended mode `mmm` and for extended class `ccc` subject to any count or value restrictions in `...`. Returns a logical scalar.
 #' @export
-mmm_ccc <- function(x, .mmm, .ccc, ...) {
-  if (ppp::cmp_mmm_ccc(x, .mmm, .ccc, ...)) {
-    if      (.ccc == "dtf") {base::nrow(x) == base::nrow(base::unique(x))}
-    else if (.ccc == "vls") {
-      N  <- base::lengths(x)
-      NU <- base::sapply(x, function(x) {base::length(base::unique(x))})
-      base::all(N == NU)
-    } else {base::length(x) == base::length(base::unique(x))}
+mmm_ccc <- function(x, mmm, ccc, ...) {
+  if (base::is.character(mmm)) {mmm <- base::tolower(mmm)}
+  if (base::is.character(ccc)) {ccc <- base::tolower(ccc)}
+  errMMM <- "[mmm] is not a scalar value from mmm_props()."
+  errCCC <- "[ccc] is not a scalar value from ccc_props()."
+  errs <- ppp::meets_errs(x, ...)
+  if (base::length(mmm) != 1) {errs <- base::c(errs, errMMM)} else if (!(mmm %in% ppp::mmm_props())) {errs <- base::c(errs, errMMM)}
+  if (base::length(ccc) != 1) {errs <- base::c(errs, errCCC)} else if (!(ccc %in% ppp::ccc_props())) {errs <- base::c(errs, errCCC)}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
+  if (ppp::bbb_ccc(x, "atm", ccc, ...)) {
+    if      (ppp::.VLS(x)) {base::all(base::sapply(x,    ppp::MMM(x, mmm, ...)))}
+    else if (ppp::.DTF(x)) {base::all(base::apply( x, 2, ppp::MMM(x, mmm, ...)))}
+    else                   {                             ppp::MMM(x, mmm, ...)  }
   } else {F}
 }
 
@@ -36,38 +41,6 @@ mmm_ccc_funs <- function() {
   x <- base::apply(x, 1, paste0, collapse = "_")
   base::paste0('', base::sort(ppp::av(x)))
 }
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for array-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_arr <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'arr', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for data.frame-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_dtf <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'dtf', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for generic-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_gen <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'gen', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for matrix-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_mat <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'mat', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for multivec-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_mvc <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'mvc', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for scalar-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_scl <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'scl', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for vec-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_vec <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'vec', ...)}
-
-#' @describeIn mmm_ccc_PROPS Checks `x` for atomicness-ness and for vector-list-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
-#' @export
-atm_vls <- function(x, ...) {ppp::mmm_ccc(x, 'atm', 'vls', ...)}
 
 #' @describeIn mmm_ccc_PROPS Checks `x` for onechar-ness and for array-ness subject to any count/value restrictions in `...`. Returns a logical scalar.
 #' @export

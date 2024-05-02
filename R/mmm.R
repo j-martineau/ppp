@@ -81,7 +81,7 @@ mmm_PROPS <- function() {utils::help("mmm_PROPS", package = "ppp")}
 #' @export
 mmm <- function(x) {
   y <- NULL
-  for (MMM in ppp::mmm_funs()) {if (base::eval(base::parse(text = base::paste0("ppp::.", MMM, "(x)")))) {y <- base::c(y, base::tolower(MMM))}}
+  for (mmm in ppp::mmm_funs()) {if (base::eval(base::parse(text = base::paste0("ppp::.", mmm, "(x)")))) {y <- base::c(y, base::tolower(mmm))}}
   y
 }
 
@@ -103,11 +103,11 @@ is_mmm_spec <- function(spec) {
 #' @describeIn mmm_PROPS Checks whether the object `x` is a match to extended mode spec in `spec` subject to any count or value restriction arguments in `...`. Returns a logical scalar. See \code{\link{ppp}} for a definition of a property spec.
 #' @export
 MMM <- function(x, spec, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::is_mmm_spec(spec)) {Errors <- base::c(Errors, '[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from mmm_props().')}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
-  Props <- ppp::spec2props(spec)
-  for (Prop in base::toupper(Props)) {if (base::eval(base::parse(text = base::paste0("ppp::.", Prop, "(x)")))) {return(T)}}
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::is_mmm_spec(spec)) {errs <- base::c(errs, '[spec] must be a complete character vec (?cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from mmm_props().')}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
+  props <- ppp::spec2props(spec)
+  for (prop in base::toupper(props)) {if (base::eval(base::parse(text = base::paste0("ppp::.", prop, "(x)")))) {return(T)}}
   F
 }
 

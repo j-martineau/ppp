@@ -132,264 +132,264 @@
 \usage{
 ppp_fast()
 
-.ATM(x, .valid = NULL)
+.ATM(x, valid = NULL)
 
-.DEF(x, .valid = NULL)
+.DEF(x, valid = NULL)
 
-.FUN(x, .valid = NULL)
+.FUN(x, valid = NULL)
 
 .NIL(x)
 
 .NLL(x)
 
-.POP(x, .valid = NULL)
+.POP(x, valid = NULL)
 
-.RCR(x, .valid = NULL)
+.RCR(x, valid = NULL)
 
-.ARR(x, .valid = NULL)
+.ARR(x, valid = NULL)
 
-.DTF(x, .valid = NULL)
+.DTF(x, valid = NULL)
 
-.GEN(x, .valid = NULL)
+.GEN(x, valid = NULL)
 
-.MAT(x, .valid = NULL)
+.MAT(x, valid = NULL)
 
-.MVC(x, .valid = NULL)
+.MVC(x, valid = NULL)
 
-.SCL(x, .valid = NULL)
+.SCL(x, valid = NULL)
 
-.VLS(x, .valid = NULL)
+.VLS(x, valid = NULL)
 
-.VEC(x, .valid = NULL)
+.VEC(x, valid = NULL)
 
 .D0D(x)
 
-.D1D(x, .valid = NULL)
+.D1D(x, valid = NULL)
 
-.D2D(x, .valid = NULL)
+.D2D(x, valid = NULL)
 
-.DHD(x, .valid = NULL)
+.DHD(x, valid = NULL)
 
 .EUD(x)
 
-.E2D(x, .valid = NULL)
+.E2D(x, valid = NULL)
 
-.EHD(x, .valid = NULL)
+.EHD(x, valid = NULL)
 
-.E0D(x, .valid = NULL)
+.E0D(x, valid = NULL)
 
-.E1D(x, .valid = NULL)
+.E1D(x, valid = NULL)
 
 .NA0(x)
 
-.OK0(x, .valid = NULL)
+.OK0(x, valid = NULL)
 
-.DUP(x, .valid = NULL)
+.DUP(x, valid = NULL)
 
-.UNQ(x, .valid = NULL)
+.UNQ(x, valid = NULL)
 
-.CMP(x, .valid = NULL)
+.CMP(x, valid = NULL)
 
 .MSS(x)
 
-.PRT(x, .valid = NULL)
+.PRT(x, valid = NULL)
 
-.CH1(x, .valid = NULL)
+.CH1(x, valid = NULL)
 
-.CH3(x, .valid = NULL)
+.CH3(x, valid = NULL)
 
-.CHR(x, .valid = NULL)
+.CHR(x, valid = NULL)
 
-.STR(x, .valid = NULL)
+.STR(x, valid = NULL)
 
-.CLR(x, .valid = NULL)
+.CLR(x, valid = NULL)
 
-.FAC(x, .valid = NULL)
+.FAC(x, valid = NULL)
 
-.ORD(x, .valid = NULL)
+.ORD(x, valid = NULL)
 
-.UNO(x, .valid = NULL)
+.UNO(x, valid = NULL)
 
-.IND(x, .valid = NULL)
+.IND(x, valid = NULL)
 
-.NST(x, .valid = NULL)
+.NST(x, valid = NULL)
 
-.SRT(x, .valid = NULL)
+.SRT(x, valid = NULL)
 
-.LGL(x, .valid = NULL)
+.LGL(x, valid = NULL)
 
-.NUM(x, .valid = NULL)
+.NUM(x, valid = NULL)
 
-.WHL(x, .valid = NULL)
+.WHL(x, valid = NULL)
 
-.ODD(x, .valid = NULL)
+.ODD(x, valid = NULL)
 
-.EVN(x, .valid = NULL)
+.EVN(x, valid = NULL)
 
-.NGW(x, .valid = NULL)
+.NGW(x, valid = NULL)
 
-.NPW(x, .valid = NULL)
+.NPW(x, valid = NULL)
 
-.POS(x, .valid = NULL)
+.POS(x, valid = NULL)
 
-.PSW(x, .valid = NULL)
+.PSW(x, valid = NULL)
 
-.FRC(x, .valid = NULL)
+.FRC(x, valid = NULL)
 
-.NEG(x, .valid = NULL)
+.NEG(x, valid = NULL)
 
-.POS(x, .valid = NULL)
+.POS(x, valid = NULL)
 
-.NNG(x, .valid = NULL)
+.NNG(x, valid = NULL)
 
-.NNW(x, .valid = NULL)
+.NNW(x, valid = NULL)
 
-.NPS(x, .valid = NULL)
+.NPS(x, valid = NULL)
 
-.PCT(x, .valid = NULL)
+.PCT(x, valid = NULL)
 
-.PPN(x, .valid = NULL)
+.PPN(x, valid = NULL)
 
-.COL(x, .valid = NULL)
+.COL(x, valid = NULL)
 
-.ROW(x, .valid = NULL)
+.ROW(x, valid = NULL)
 
-.PNT(x, .valid = NULL)
+.PNT(x, valid = NULL)
 
-.SLD(x, .valid = NULL)
+.SLD(x, valid = NULL)
 
-.SQR(x, .valid = NULL)
+.SQR(x, valid = NULL)
 
-.EMP(x, .valid = NULL)
+.EMP(x, valid = NULL)
 
-.RCT(x, .valid = NULL)
+.RCT(x, valid = NULL)
 
-.LIN(x, .valid = NULL)
+.LIN(x, valid = NULL)
 
-.atm_dtf(x, .valid = NULL)
+.atm_dtf(x, valid = NULL)
 
-.atm_mat(x, .valid = NULL)
+.atm_mat(x, valid = NULL)
 
-.atm_scl(x, .valid = NULL)
+.atm_scl(x, valid = NULL)
 
-.atm_vec(x, .valid = NULL)
+.atm_vec(x, valid = NULL)
 
-.atm_vls(x, .valid = NULL)
+.atm_vls(x, valid = NULL)
 
-.chr_arr(x, .valid = NULL)
+.chr_arr(x, valid = NULL)
 
-.chr_dtf(x, .valid = NULL)
+.chr_dtf(x, valid = NULL)
 
-.chr_vec(x, .valid = NULL)
+.chr_vec(x, valid = NULL)
 
-.chr_vls(x, .valid = NULL)
+.chr_vls(x, valid = NULL)
 
-.cmp_atm(x, .valid = NULL)
+.cmp_atm(x, valid = NULL)
 
-.cmp_chr(x, .valid = NULL)
+.cmp_chr(x, valid = NULL)
 
-.cmp_num(x, .valid = NULL)
+.cmp_num(x, valid = NULL)
 
-.cmp_scl(x, .valid = NULL)
+.cmp_scl(x, valid = NULL)
 
-.cmp_vec(x, .valid = NULL)
+.cmp_vec(x, valid = NULL)
 
-.lgl_scl(x, .valid = NULL)
+.lgl_scl(x, valid = NULL)
 
-.nnw_vec(x, .valid = NULL)
+.nnw_vec(x, valid = NULL)
 
-.pop_atm(x, .valid = NULL)
+.pop_atm(x, valid = NULL)
 
-.pop_chr(x, .valid = NULL)
+.pop_chr(x, valid = NULL)
 
-.pop_dtf(x, .valid = NULL)
+.pop_dtf(x, valid = NULL)
 
-.pop_mat(x, .valid = NULL)
+.pop_mat(x, valid = NULL)
 
-.pop_srt(x, .valid = NULL)
+.pop_srt(x, valid = NULL)
 
-.pop_vec(x, .valid = NULL)
+.pop_vec(x, valid = NULL)
 
-.pop_vls(x, .valid = NULL)
+.pop_vls(x, valid = NULL)
 
-.cmp_atm_vec(x, .valid = NULL)
+.cmp_atm_vec(x, valid = NULL)
 
-.cmp_ch1_scl(x, .valid = NULL)
+.cmp_ch1_scl(x, valid = NULL)
 
-.cmp_ch1_vec(x, .valid = NULL)
+.cmp_ch1_vec(x, valid = NULL)
 
-.cmp_ch3_scl(x, .valid = NULL)
+.cmp_ch3_scl(x, valid = NULL)
 
-.cmp_ch3_vec(x, .valid = NULL)
+.cmp_ch3_vec(x, valid = NULL)
 
-.cmp_chr_arr(x, .valid = NULL)
+.cmp_chr_arr(x, valid = NULL)
 
-.cmp_chr_vec(x, .valid = NULL)
+.cmp_chr_vec(x, valid = NULL)
 
-.cmp_chr_vls(x, .valid = NULL)
+.cmp_chr_vls(x, valid = NULL)
 
-.cmp_chr_gen(x, .valid = NULL)
+.cmp_chr_gen(x, valid = NULL)
 
-.cmp_chr_scl(x, .valid = NULL)
+.cmp_chr_scl(x, valid = NULL)
 
-.cmp_clr_vec(x, .valid = NULL)
+.cmp_clr_vec(x, valid = NULL)
 
-.cmp_lgl_scl(x, .valid = NULL)
+.cmp_lgl_scl(x, valid = NULL)
 
-.cmp_lgl_vec(x, .valid = NULL)
+.cmp_lgl_vec(x, valid = NULL)
 
-.cmp_nng_scl(x, .valid = NULL)
+.cmp_nng_scl(x, valid = NULL)
 
-.cmp_nnw_scl(x, .valid = NULL)
+.cmp_nnw_scl(x, valid = NULL)
 
-.cmp_nnw_vec(x, .valid = NULL)
+.cmp_nnw_vec(x, valid = NULL)
 
-.cmp_num_scl(x, .valid = NULL)
+.cmp_num_scl(x, valid = NULL)
 
-.cmp_num_vec(x, .valid = NULL)
+.cmp_num_vec(x, valid = NULL)
 
-.cmp_pos_vec(x, .valid = NULL)
+.cmp_pos_vec(x, valid = NULL)
 
-.cmp_ppn_vec(x, .valid = NULL)
+.cmp_ppn_vec(x, valid = NULL)
 
-.cmp_psw_scl(x, .valid = NULL)
+.cmp_psw_scl(x, valid = NULL)
 
-.cmp_psw_vec(x, .valid = NULL)
+.cmp_psw_vec(x, valid = NULL)
 
-.cmp_srt_vec(x, .valid = NULL)
+.cmp_srt_vec(x, valid = NULL)
 
-.cmp_str_scl(x, .valid = NULL)
+.cmp_str_scl(x, valid = NULL)
 
-.cmp_str_vec(x, .valid = NULL)
+.cmp_str_vec(x, valid = NULL)
 
-.cmp_whl_scl(x, .valid = NULL)
+.cmp_whl_scl(x, valid = NULL)
 
-.cmp_atm_mvc(x, .valid = NULL)
+.cmp_atm_mvc(x, valid = NULL)
 
-.unq_atm_mvc(x, .valid = NULL)
+.unq_atm_mvc(x, valid = NULL)
 
-.unq_atm_vec(x, .valid = NULL)
+.unq_atm_vec(x, valid = NULL)
 
-.unq_ch1_vec(x, .valid = NULL)
+.unq_ch1_vec(x, valid = NULL)
 
-.unq_ch3_vec(x, .valid = NULL)
+.unq_ch3_vec(x, valid = NULL)
 
-.unq_chr_vec(x, .valid = NULL)
+.unq_chr_vec(x, valid = NULL)
 
-.unq_nnw_vec(x, .valid = NULL)
+.unq_nnw_vec(x, valid = NULL)
 
-.unq_num_vec(x, .valid = NULL)
+.unq_num_vec(x, valid = NULL)
 
-.unq_psw_vec(x, .valid = NULL)
+.unq_psw_vec(x, valid = NULL)
 
-.unq_str_vec(x, .valid = NULL)
+.unq_str_vec(x, valid = NULL)
 
-.atm_rct_dtf(x, .valid = NULL)
+.atm_rct_dtf(x, valid = NULL)
 }
 \arguments{
 \item{x}{Any object. See \emph{details}.}
 
-\item{.valid}{An optional object containing valid atomic values to check against atomic values in \code{x}. See \emph{details}.}
+\item{valid}{An optional object containing valid atomic values to check against atomic values in \code{x}. See \emph{details}.}
 }
 \value{
 A logical scalar.
@@ -398,5 +398,5 @@ A logical scalar.
 Fast property checking for \code{\link{ppp}} functions without the dot prefix (e.g., \code{.ATM(x)} is a faster version of \code{ATM(x)} because it uses only base functions to conduct property checking).
 }
 \details{
-When \code{.valid} is supplied, both \code{x} and \code{.valid} are \link[ppp:av]{atomized} before checking whether all atomic elements of \code{x} are contained in the atomic elements of \code{.valid}.
+When \code{valid} is supplied, both \code{x} and \code{valid} are \link[ppp:av]{atomized} before checking whether all atomic elements of \code{x} are contained in the atomic elements of \code{valid}.
 }

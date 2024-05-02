@@ -77,9 +77,9 @@ is_sss_spec <- function(spec) {
 #' @describeIn sss_PROPS Checks `x` against the shape property spec `spec`. Returns a logical scalar. See \code{\link{ppp}} for the definition of a property spec.
 #' @export
 SSS <- function(x, spec, ...) {
-  Errors <- ppp::meets_errs(x, ...)
-  if (!ppp::is_sss_spec(spec)) {Errors <- base::c(Errors, "[spec] must be a complete character vec (?ppp::cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from sss_props().")}
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
+  errs <- ppp::meets_errs(x, ...)
+  if (!ppp::is_sss_spec(spec)) {errs <- base::c(errs, "[spec] must be a complete character vec (?ppp::cmp_chr_vec) containing one or more (possible pipe-separated) values exclusively from sss_props().")}
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .pkg = "ppp")}
   if (ppp::meets(x, ...)) {for (PPP in base::toupper(ppp::spec2props(spec))) {if (base::eval(base::parse(base::pate0('ppp:::.', PPP, '(x)')))) {return(T)}}}
   F
 }

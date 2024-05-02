@@ -2,7 +2,7 @@
 #' @title Combo Completeness Extended Class Properties
 #' @description Combinations of \link[=CMP]{completeness} and \link[=ccc]{extended class} properties.
 #' @param x An R object.
-#' @param .ccc A character scalar single xclass property from \code{\link{ccc_props}()}.
+#' @param ccc A character scalar single xclass property from \code{\link{ccc_props}()}.
 #' @inheritDotParams meets
 #' @inheritSection meets Specifying count and value restrictions
 #' @return **A character vector** \cr\cr `cmp_ccc_funs`
@@ -18,10 +18,10 @@
 #' @export
 cmp_ccc_PROPS <- function() {utils::help("cmp_ccc_PROPS", package = "ppp")}
 
-#' @describeIn cmp_ccc_PROPS Checks `x` for completeness plus the extended class in `.ccc` subject to count and/or value restrictions in `...`. Returns a logical scalar.
+#' @describeIn cmp_ccc_PROPS Checks `x` for completeness plus the extended class in `ccc` subject to count and/or value restrictions in `...`. Returns a logical scalar.
 #' @export
-cmp_ccc <- function(x, .ccc, ...) {
-  cfun <- function(cx) {base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(.ccc), "(cx)")))}
+cmp_ccc <- function(x, ccc, ...) {
+  cfun <- function(cx) {base::eval(base::parse(text = base::paste0("ppp::.", base::toupper(ccc), "(cx)")))}
   afun <- function(ax) {if (!base::is.atomic(ax)) {F} else if (base::length(ax) == 0) {F} else {!base::any(base::is.na(ax))}}
   dfun <- function(dx) {
     if (base::NROW(x) * base::NCOL(x) > 0) {
@@ -30,13 +30,13 @@ cmp_ccc <- function(x, .ccc, ...) {
     } else {F}
   }
   vfun <- function(vx) {base::all(base::sapply(vx, afun))}
-  if (base::is.character(.ccc)) {.ccc <- base::tolower(.ccc)}
-  Errs <- ppp::meets_errs(x, ...)
-  if (!base::is.null(Errs)) {ppp::stopperr(Errs, .PKG = "ppp")}
-  if (!(.ccc %in% ppp::ccc_props())) {F}
+  if (base::is.character(ccc)) {ccc <- base::tolower(ccc)}
+  errs <- ppp::meets_errs(x, ...)
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
+  if (!(ccc %in% ppp::ccc_props())) {F}
   else if (!cfun(x)) {F}
-  else if (.ccc == "dtf") {dfun(x)}
-  else if (.ccc == "vls") {vfun(x)}
+  else if (ccc == "dtf") {dfun(x)}
+  else if (ccc == "vls") {vfun(x)}
   else {afun(x)}
 }
 

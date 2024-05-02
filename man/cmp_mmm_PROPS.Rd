@@ -36,7 +36,7 @@
 \usage{
 cmp_mmm_PROPS()
 
-cmp_mmm(x, .mmm, ...)
+cmp_mmm(x, mmm, ...)
 
 cmp_mmm_funs()
 
@@ -97,7 +97,7 @@ cmp_whl(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.mmm}{A character scalar extended mode property from \code{mmm_props()}.}
+\item{mmm}{A character scalar extended mode property from \code{mmm_props()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -110,7 +110,7 @@ Check for combination of \link[=CMP]{completeness} and \link[=mmm]{extended mode
 }
 \section{Functions}{
 \itemize{
-\item \code{cmp_mmm()}: Check \code{x} for completeness and for the extended mode in \code{.mmm} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{cmp_mmm()}: Check \code{x} for completeness and for the extended mode in \code{mmm} subject to any count or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{cmp_mmm_funs()}: Lists completeness plus extended mode property checking functions. Returns a character vector.
 

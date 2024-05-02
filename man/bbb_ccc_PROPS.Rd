@@ -31,7 +31,7 @@
 \usage{
 bbb_ccc_PROPS()
 
-bbb_ccc(x, .bbb, .ccc, ...)
+bbb_ccc(x, bbb, ccc, ...)
 
 bbb_ccc_funs()
 
@@ -82,9 +82,9 @@ pop_vls(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.bbb}{A character scalar single basic property from \code{\link{bbb_props}()}.}
+\item{bbb}{A character scalar single basic property from \code{\link{bbb_props}()}.}
 
-\item{.ccc}{A character scalar single extendec class property from \code{\link{ccc_props}()}.}
+\item{ccc}{A character scalar single extendec class property from \code{\link{ccc_props}()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -98,7 +98,7 @@ Some combinations of basic + extended class properties are nonsensical. For this
 }
 \section{Functions}{
 \itemize{
-\item \code{bbb_ccc()}: Checks \code{x} for the basic property in \code{.bbb} and for the extended class property in \code{.ccc} subject to any count and/or value restrictions in \code{...}. Returns a logical scalar.
+\item \code{bbb_ccc()}: Checks \code{x} for the basic property in \code{bbb} and for the extended class property in \code{ccc} subject to any count and/or value restrictions in \code{...}. Returns a logical scalar.
 
 \item \code{bbb_ccc_funs()}: Lists all combo basic plus extended class property checking functions.
 

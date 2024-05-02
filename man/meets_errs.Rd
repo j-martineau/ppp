@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{meets_errs}
 \alias{meets_errs}
-\title{Checks for Meta-Errors in Value-Restriction Arguments, If There Are Any}
+\title{Checks for Meta-Errors in Count and/or Value-Restriction Arguments, If There Are Any}
 \usage{
 meets_errs(x, ...)
 }

@@ -25,28 +25,28 @@
 #' @export
 meets <- function(x, ...) {
   if (base::...length() == 0) {return(T)}
-  Errors <- ppp::meets_errs(x, ...)
-  if (!base::is.null(Errors)) {ppp::stopperr(Errors, .PKG = "ppp")}
-  Atoms <- ppp::av(x)
-  if (ppp::.D1D(x)) {NX <- base::length(x)} else {NX <- base::prod(base::dim(x))}
-  Atoms <- Atoms[!base::is.na(Atoms)]
-  NR    <- base::NROW(x)
-  NC    <- base::NCOL(x)
-  Dots  <- base::list(...)
-  if (base::length(Atoms) == 0) {return(T)}
-  else if (!base::is.null(Dots$.n)) {if (!(NX %in% Dots$.n)) {return(F)}}
-  else if (!base::is.null(Dots$.nr)) {if (!(NR %in% Dots$.nr)) {return(F)}}
-  else if (!base::is.null(Dots$.nc)) {if (!(NC %in% Dots$.nc)) {return(F)}}
-  else if (!base::is.null(Dots$.le)) {if (base::any(Atoms > Dots$.le)) {return(F)}}
-  else if (!base::is.null(Dots$.ge)) {if (base::any(Atoms < Dots$.ge)) {return(F)}}
-  else if (!base::is.null(Dots$.lt)) {if (base::any(Atoms >= Dots$.lt)) {return(F)}}
-  else if (!base::is.null(Dots$.gt)) {if (base::any(Atoms <= Dots$.gt)) {return(F)}}
-  else if (!base::is.null(Dots$.min)) {if (!(NX >= Dots$.min)) {return(F)}}
-  else if (!base::is.null(Dots$.max)) {if (!(NX <= Dots$.max)) {return(F)}}
-  else if (!base::is.null(Dots$.minr)) {if (!(NR >= Dots$.minr)) {return(F)}}
-  else if (!base::is.null(Dots$.maxr)) {if (!(NR <= Dots$.maxr)) {return(F)}}
-  else if (!base::is.null(Dots$.minc)) {if (!(NC >= Dots$.minc)) {return(F)}}
-  else if (!base::is.null(Dots$.maxc)) {if (!(NC <= Dots$.maxc)) {return(F)}}
-  else if (!base::is.null(Dots$.vals)) {if (base::all(Atoms %in% Dots$.vals)) {return(F)}}
+  errs <- ppp::meets_errs(x, ...)
+  if (!base::is.null(errs)) {ppp::stopperr(errs, .PKG = "ppp")}
+  atoms <- ppp::av(x)
+  if (ppp::.D1D(x)) {nx <- base::length(x)} else {nx <- base::prod(base::dim(x))}
+  atoms <- atoms[!base::is.na(atoms)]
+  nr    <- base::NROW(x)
+  nc    <- base::NCOL(x)
+  dots  <- base::list(...)
+  if (base::length(atoms) == 0) {return(T)}
+  else if (!base::is.null(dots$.n   )) {if (!(nx %in% dots$.n              )) {return(F)}}
+  else if (!base::is.null(dots$.nr  )) {if (!(nr %in% dots$.nr             )) {return(F)}}
+  else if (!base::is.null(dots$.nc  )) {if (!(nc %in% dots$.nc             )) {return(F)}}
+  else if (!base::is.null(dots$.le  )) {if (base::any(atoms > dots$.le     )) {return(F)}}
+  else if (!base::is.null(dots$.ge  )) {if (base::any(atoms < dots$.ge     )) {return(F)}}
+  else if (!base::is.null(dots$.lt  )) {if (base::any(atoms >= dots$.lt    )) {return(F)}}
+  else if (!base::is.null(dots$.gt  )) {if (base::any(atoms <= dots$.gt    )) {return(F)}}
+  else if (!base::is.null(dots$.min )) {if (!(nx >= dots$.min              )) {return(F)}}
+  else if (!base::is.null(dots$.max )) {if (!(nx <= dots$.max              )) {return(F)}}
+  else if (!base::is.null(dots$.minr)) {if (!(nr >= dots$.minr             )) {return(F)}}
+  else if (!base::is.null(dots$.maxr)) {if (!(nr <= dots$.maxr             )) {return(F)}}
+  else if (!base::is.null(dots$.minc)) {if (!(nc >= dots$.minc             )) {return(F)}}
+  else if (!base::is.null(dots$.maxc)) {if (!(nc <= dots$.maxc             )) {return(F)}}
+  else if (!base::is.null(dots$.vals)) {if (base::all(atoms %in% dots$.vals)) {return(F)}}
   T
 }

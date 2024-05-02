@@ -17,7 +17,7 @@
 \usage{
 unq_ccc_PROPS()
 
-unq_ccc(x, .ccc, ...)
+unq_ccc(x, ccc, ...)
 
 unq_ccc_funs()
 
@@ -40,7 +40,7 @@ unq_vls(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.ccc}{A character scalar single extended property from \code{\link{ccc_props}()}.}
+\item{ccc}{A character scalar single extended property from \code{\link{ccc_props}()}.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -53,7 +53,7 @@ Functions checking for combinations of \link[=UNQ]{uniqueness} and \link[=ccc]{e
 }
 \section{Functions}{
 \itemize{
-\item \code{unq_ccc()}: Checks \code{x} for uniqueness and against the extended class in \code{.ccc}. Return a logical scalar.
+\item \code{unq_ccc()}: Checks \code{x} for uniqueness and against the extended class in \code{ccc}. Return a logical scalar.
 
 \item \code{unq_ccc_funs()}: Lists all combo uniqueness and extended class property checking functions. Returns a sorted, lowercase, character vector.
 

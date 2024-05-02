@@ -36,7 +36,7 @@
 \usage{
 unq_mmm_PROPS()
 
-unq_mmm(x, .mmm, ...)
+unq_mmm(x, mmm, ...)
 
 unq_mmm_funs()
 
@@ -97,7 +97,7 @@ unq_whl(x, ...)
 \arguments{
 \item{x}{An R object.}
 
-\item{.mmm}{A character scalar extended mode property from \code{\link{mmm_props}()}`.}
+\item{mmm}{A character scalar extended mode property from \code{\link{mmm_props}()}`.}
 
 \item{...}{
   Arguments passed on to \code{\link[=meets]{meets}}
@@ -110,7 +110,7 @@ Functions for checking combinations of \link[=UNQ]{uniqueness} and \link[=mmm]{e
 }
 \section{Functions}{
 \itemize{
-\item \code{unq_mmm()}: Checks \code{x} for completened and against the extended mode in \code{.mmm} subject to any count and/or value restrictions in \code{.mmm}. Returns a logical scalar.
+\item \code{unq_mmm()}: Checks \code{x} for completened and against the extended mode in \code{mmm} subject to any count and/or value restrictions in \code{mmm}. Returns a logical scalar.
 
 \item \code{unq_mmm_funs()}: Lists all combo uniqueness plus extended mode property checking functions. Returns a character vector.
 
